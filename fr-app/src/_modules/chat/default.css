@@ -1,0 +1,128 @@
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-content .channel-picker {
+  flex: 0 0 40px;
+  background: #ccc;
+}
+
+.chat-content .channel-picker p,
+.chat-content .channel-picker h4 {
+  margin: 0;
+}
+
+.chat-content .channel-picker .current {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: #2b2e35;
+  color: #eee;
+}
+
+.chat-content .channel-picker .options {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-in-out;
+}
+
+.chat-content .channel-picker .options.expanded {
+  max-height: 200px;
+  overflow: auto;
+  transition: max-height 0.25s ease-in-out;
+}
+
+.chat-content .channel-picker .options .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: #2b2e35;
+}
+
+.chat-content .channel-picker .options .channel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-top: solid 1px #bbb;
+}
+
+.chat-content .channel-content {
+  flex: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+}
+
+.chat-content .channel-content .empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+}
+
+.chat-content .channel-content .chat-entry {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  max-width: 75%;
+  background: #ddd;
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.chat-content .channel-content .chat-entry.mine {
+  align-self: flex-end;
+  background: #ccc;
+}
+
+.chat-content .channel-content .chat-entry .avatar {
+  margin-right: 0.5rem;;
+  color: #aaa;
+}
+
+.chat-content .channel-content .chat-entry .content .meta {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.1rem;
+}
+
+.chat-content .channel-content .chat-entry .content .meta .time {
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.chat-content .message-entry {
+  flex: 0 0 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: #2b2e35;
+  color: #eee;
+}
+
+.chat-content .message-entry input {
+  flex: auto;
+  background: transparent;
+  border: none;
+  border-bottom: solid 2px #3b3e45;
+  color: #ccc;
+  outline: none;
+  padding: 0;
+  margin-right: 1rem;
+}
+
+.chat-content .message-entry input::placeholder {
+  color: #3b3e45;
+}

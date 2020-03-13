@@ -1,0 +1,9 @@
+{
+  "short_name": "Fight Record",
+  "name": "Muay Thai and K1 Fight Records, Fighter Profiles, Events - Fight Record",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#e5192c",
+  "background_color": "#ffffff"
+}

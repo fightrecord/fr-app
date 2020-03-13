@@ -1,0 +1,58 @@
+.main-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header {
+  background: #e5192c;
+  color: #fff;
+  padding: 1rem;
+  display:flex;
+  justify-content: space-between;
+}
+
+.main-logo {
+  flex: 0 0 100px;
+  background-image: url(./assets/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -1rem;
+}
+
+.main-content {
+  flex: auto;
+  overflow: hidden;
+  max-width: 100vw;
+  display: flex;
+}
+
+.main-content-inner {
+  flex: auto;
+  display: flex;
+  transition: margin-left 0.5s ease-in-out;
+}
+
+.main-content-inner .module-page {
+  flex: auto;
+  min-width: 100vw;
+  overflow-y: auto;
+  display: flex;
+}
+
+.main-footer {
+  background: #222329;
+  color: #999;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-footer .menu-option {
+  cursor: pointer;
+}
+
+.main-footer .menu-option.selected {
+  color: #eee;
+}
