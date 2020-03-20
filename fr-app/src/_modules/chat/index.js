@@ -14,5 +14,5 @@ export default {
   label: 'Chat',
   render,
   icon: commentingO,
-  inFooter: true
+  inMenu: true
 };

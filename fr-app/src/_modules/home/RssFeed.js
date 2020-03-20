@@ -22,13 +22,15 @@ export default ({ feedUrl }) => {
     <div className="rss-feed">
       <h1>News</h1>
       <Error error={error} />
-      {items.length < 1 && (
-        <div className="empty">
-          <Icon size={48} icon={newspaperO} />
-          <p>There is no news!</p>
-        </div>
-      )}
-      {items.map(item => <RssFeedItem key={item.guid} item={item} />)}
+      <div className="news">
+        {items.length < 1 && (
+          <div className="empty">
+            <Icon size={48} icon={newspaperO} />
+            <p>There is no news!</p>
+          </div>
+        )}
+        {items.map(item => <RssFeedItem key={item.guid} item={item} />)}
+      </div>
     </div>
   );
 };

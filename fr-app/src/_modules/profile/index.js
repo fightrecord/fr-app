@@ -12,5 +12,5 @@ export default {
   label: 'Your Profile',
   render,
   icon: user,
-  inFooter: true
+  inMenu: true
 };

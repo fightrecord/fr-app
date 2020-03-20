@@ -1,0 +1,13 @@
+@media (min-width: 800px) {
+  .rss-feed-item {
+    margin-bottom: inherit;
+  }
+
+  .rss-feed-item h4 {
+    margin-bottom: 1rem;
+  }
+
+  .rss-feed-item p {
+    max-height: 200px;
+  }
+}

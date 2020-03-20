@@ -2,6 +2,7 @@ import React from 'react';
 import { home } from 'react-icons-kit/fa';
 import RssFeed from './RssFeed';
 import './default.css';
+import './console.css';
 
 const render = () => (
   <div className="home-content">
@@ -14,5 +15,5 @@ export default {
   label: 'Home',
   render,
   icon: home,
-  inFooter: true
+  inMenu: true
 };

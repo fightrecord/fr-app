@@ -7,9 +7,9 @@ export default ({ modules }) => {
   const [{ currentModule }, dispatch] = useFrameworkState();
 
   return (
-    <div className="main-footer">
+    <div className="main-menu">
       {modules
-        .filter(({ inFooter }) => inFooter)
+        .filter(({ inMenu }) => inMenu)
         .map(({ icon, key }) => (
           <div
             className={cx('menu-option', { selected: currentModule === key })}

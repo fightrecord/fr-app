@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from './Header';
 import Content from './Content';
-import Footer from './Footer';
+import Menu from './Menu';
 
 export default ({ modules }) => (
   <div className="main-layout">
     <Header />
-    <Content modules={modules} />
-    <Footer modules={modules} />
+    <div className="pages">
+      <Menu modules={modules} />
+      <Content modules={modules} />
+    </div>
   </div>
 );
