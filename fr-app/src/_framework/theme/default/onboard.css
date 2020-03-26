@@ -1,0 +1,138 @@
+.onboard {
+  flex: auto;
+  overflow: hidden;
+  max-width: 100vw;
+  display: flex;
+}
+
+.onboard h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.onboard p {
+  color: #fff;
+  background: rgba(0,0,0,0.2);
+  padding: 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.onboard button {
+  display: block;
+}
+
+.onboard input {
+  display: block;
+}
+
+.onboard-inner {
+  flex: auto;
+  display: flex;
+  transition: margin-left 0.5s ease-in-out;
+}
+
+.onboard-page {
+  flex: auto;
+  min-width: 100vw;
+  overflow: hidden;
+  display: flex;
+}
+
+.onboard-page > div.darkred-red {
+  background: #e5192c;
+  background: linear-gradient(100deg, #c21424 0%, #c21424 50%, #9c101e 50%, #e5192c 52%, #e5192c 100%);
+}
+
+.onboard-page > div.red-grey {
+  background: #222329;
+  background: linear-gradient(100deg, #e5192c 0%, #e5192c 50%, #141418 50%, #222329 52%, #222329 100%);
+}
+
+.onboard-page > div.red-white {
+  background: #fff;
+  background: linear-gradient(100deg, #e5192c 0%, #e5192c 50%, #666 50%, #fff 52%, #fff 100%);
+}
+
+.onboard-page > div.grey-darkred {
+  background: #c21424;
+  background: linear-gradient(100deg, #222329 0%, #222329 50%, #790c17 50%, #c21424 52%, #c21424 100%);
+}
+
+.onboard-page > div.grey-white {
+  background: #fff;
+  background: linear-gradient(100deg, #222329 0%, #222329 50%, #666 50%, #fff 52%, #fff 100%);
+}
+
+.onboard-page > div.white-grey {
+  background: #fff;
+  background: linear-gradient(100deg, #fff 0%, #fff 50%, #141418 50%, #222329 52%, #222329 100%);
+}
+
+.onboard-page .row {
+  flex: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem -1rem;
+}
+
+.onboard-page .row .column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  min-width: 200px;
+}
+
+.onboard-page button {
+  margin: 0.5rem 0 !important;
+  width: 100% !important;
+  outline: none;
+}
+
+.onboard-content {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.onboard-content.logo {
+  align-items: center;
+}
+
+.onboard-content.logo .inner {
+  flex: 0 0 150px;
+  min-width: 150px;
+  background-image: url(./assets/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 100px;
+}
+
+.onboard-content.logo h1 {
+  margin: 0;
+  margin-top: -40px;
+  margin-left: 120px;
+  color: #fff;
+  font-size: 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.onboard-content.logo i {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  color: #fff;
+  display: none !important;
+}
+
+.selected .onboard-content.logo i {
+  display: block !important;
+  cursor: pointer;
+}

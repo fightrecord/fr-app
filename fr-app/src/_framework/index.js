@@ -6,7 +6,8 @@ import './theme/default';
 
 import AuthenticationWrapper from './wrappers/AuthenticationWrapper';
 import ConfigurationWrapper from './wrappers/ConfigurationWrapper';
-import MainLayout from './layout/MainLayout';
+import MainLayout from './layout';
+import Onboard from './onboard';
 
 const State = StateBuilder('_framework');
 
@@ -14,7 +15,6 @@ export const useFrameworkState = State.useStateValue;
 
 export default ({ modules }) => {
   const initialState = {
-    userId: `User ${DateTime.utc().toFormat('ss')}`,
     currentModule: localStorage.getItem(StorageKeys.CurrentModule) || 'home',
     channels: {},
     currentChannel: {}
@@ -34,6 +34,9 @@ export default ({ modules }) => {
         };
       case 'select-channel':
         return { ...state, currentChannel: payload };
+      case 'user-changed':
+        const { user, token } = payload;
+        return { ...state, user, token };
       default:
         return state;
     }
@@ -46,7 +49,7 @@ export default ({ modules }) => {
   return (
     <State.StateProvider initialState={initialState} reducer={reducer}>
       <ConfigurationWrapper>
-        <AuthenticationWrapper>
+        <AuthenticationWrapper renderOnboarder={() => <Onboard />}>
           <MainLayout {...options} />
         </AuthenticationWrapper>
       </ConfigurationWrapper>

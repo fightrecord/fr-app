@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
+import 'firebase/auth';
 import 'firebase/firestore';
 import App from './_framework';
 import * as serviceWorker from './serviceWorker';

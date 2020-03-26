@@ -29,8 +29,65 @@ input, button, textarea {
   font-family: 'Inter', sans-serif;
 }
 
+button {
+  background: #e5192c;
+  border: solid 1px #9c101e;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 0.5rem 2rem;
+  color: #fff;
+  cursor: pointer;
+  margin: 0.1rem;
+  outline: none;
+}
+
+button:hover {
+  background: #f11a2f;
+}
+
+button:disabled {
+  background: #222329;
+  color: #333;
+}
+
+button.secondary {
+  background: #141418;
+  border: solid 1px #222329;
+  padding: 0.5rem 0;
+  font-size: 0.7rem;
+  color: #ccc;
+}
+
+button.link:hover {
+  color: #fff;
+}
+
 i {
   display: flex !important;
   justify-content: center;
   align-items: center;
+}
+
+input {
+  background: #141418;
+  border: solid 1px #333;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 0.5rem 2rem;
+  color: #fff;
+  margin: 0.1rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+
+input::placeholder {
+  color: #333;
+}
+
+.logo {
+  background-image: url(./assets/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -1rem;
 }

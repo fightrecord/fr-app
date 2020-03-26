@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useCallback } from 'react';
 
 export default name => {
   const stateName = name;
@@ -13,18 +13,18 @@ export default name => {
   const useStateValue = () => {
     const [state, rawDispatch] = useContext(context);
 
-    const dispatch = (type, payload) => {
+    const dispatch = useCallback((type, payload) => {
       console.log(stateName, 'dispatch', type, payload);
       rawDispatch({ type, payload });
-    };
+    }, [rawDispatch]);
 
-    const dispatchSnapshot = (action, hydrate = d => d) => snap => {
+    const dispatchSnapshot = useCallback((action, hydrate = d => d) => snap => {
       const list = {};
       snap.docs.forEach(doc => {
         list[doc.id] = hydrate(doc.data(), doc.id);
       });
       dispatch(action, list);
-    };
+    }, [dispatch]);
 
     return [
       state,

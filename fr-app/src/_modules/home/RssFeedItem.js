@@ -14,7 +14,7 @@ export default ({ item }) => {
       <h1>{title}</h1>
       <h4>{creator} : {dateTime.toLocaleString(DateTime.DATETIME_FULL)}</h4>
       <p>{shortenedSnippet}</p>
-      <a href={link} target="_blank">
+      <a href={link} target="_blank" rel="noopener noreferrer">
         Read more...
         <Icon size={16} icon={caretRight} />
       </a>
