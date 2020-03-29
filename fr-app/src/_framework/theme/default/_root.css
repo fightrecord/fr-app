@@ -81,7 +81,7 @@ input {
 }
 
 input::placeholder {
-  color: #333;
+  color: #666;
 }
 
 .logo {

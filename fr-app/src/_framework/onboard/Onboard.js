@@ -19,7 +19,7 @@ const Pages = {
 
 export default () => {
   const [{ user }] = useFrameworkState();
-  const [pageIndex, setPageIndex] = useState(Pages.SelectIdp);
+  const [pageIndex, setPageIndex] = useState(Pages.Logo);
 
   const getClassNames = index => cx('onboard-page', {
     selected: pageIndex === index

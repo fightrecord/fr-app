@@ -2,8 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 
 export default ({
-  onComplete = () => null,
-  onCancel
+  onComplete = () => null
 }) => (
     <div className="onboard-content pick-roles white-grey">
       <h1>Pick Roles</h1>
@@ -13,7 +12,6 @@ export default ({
         </div>
         <div className="column">
           Column 2
-          {onCancel && <button className="secondary" onClick={onCancel}>Cancel</button>}
           <button className="secondary" onClick={() => firebase.auth().signOut()}>Log out</button>
         </div>
       </div>
