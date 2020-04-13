@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
-import { useFrameworkState } from '..';
+import { useGlobalState } from '../wrappers/GlobalStateWrapper';
 
 export default ({ modules }) => {
-  const [{ currentModule }] = useFrameworkState();
+  const { state: { currentModule } } = useGlobalState();
 
   const keys = modules.map(({ key }) => key);
   const offset = keys.indexOf(currentModule);

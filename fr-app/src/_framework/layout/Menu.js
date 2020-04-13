@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import { Icon } from 'react-icons-kit';
-import { useFrameworkState } from '..';
+import { useGlobalState } from '../wrappers/GlobalStateWrapper';
 
 export default ({ modules }) => {
-  const [{ currentModule }, dispatch] = useFrameworkState();
+  const { state: { currentModule }, dispatch } = useGlobalState();
 
   return (
     <div className="main-menu">

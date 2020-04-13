@@ -25,7 +25,7 @@ export default ({
     && password === passwordCheck;
 
   return (
-    <div className="onboard-content register red-white">
+    <div className="onboard-content register red-grey">
       <h1>Register</h1>
       <div className="row">
         <div className="column">

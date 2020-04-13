@@ -3,12 +3,12 @@ import firebase from 'firebase/app';
 import { DateTime } from 'luxon';
 import { Icon } from 'react-icons-kit';
 import { send } from 'react-icons-kit/fa';
-import { useFrameworkState } from '../../_framework';
+import { useGlobalState } from '../../_framework/wrappers/GlobalStateWrapper';
 
 const ENTER_KEY = 13;
 
 export default () => {
-  const [{ currentChannel: { id: channelId } = {}, userId }] = useFrameworkState();
+  const { state: { currentChannel: { id: channelId } = {}, userId } } = useGlobalState();
   const [message, setMessage] = useState('');
 
   const sendMessage = () => {

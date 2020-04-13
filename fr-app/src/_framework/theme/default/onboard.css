@@ -5,7 +5,8 @@
   display: flex;
 }
 
-.onboard h1 {
+.onboard h1,
+.onboard h2 {
   margin: 0;
   color: #fff;
 }
@@ -16,6 +17,19 @@
   padding: 1rem;
   margin: 0.5rem 0;
   font-size: 0.9rem;
+}
+
+.onboard p.small {
+  font-size: 0.7rem;
+}
+
+.onboard a {
+  text-decoration: none;
+  color: #f99;
+}
+
+.onboard a:hover {
+  color: #fff;
 }
 
 .onboard button {
@@ -42,6 +56,11 @@
 .onboard-page > div.darkred-red {
   background: #e5192c;
   background: linear-gradient(100deg, #c21424 0%, #c21424 50%, #9c101e 50%, #e5192c 52%, #e5192c 100%);
+}
+
+.onboard-page > div.darkred-white {
+  background: #e5192c;
+  background: linear-gradient(100deg, #c21424 0%, #c21424 50%, #666 50%, #fff 52%, #fff 100%);
 }
 
 .onboard-page > div.red-grey {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default ({ children }) => {
 
@@ -6,9 +6,5 @@ export default ({ children }) => {
 
   });
 
-  return (
-    <>
-      {children}
-    </>
-  );
+  return children;
 };

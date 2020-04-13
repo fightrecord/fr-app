@@ -1,17 +1,43 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    match /channel/{channelId} {
-      allow read: if true;
-    }
-
-    match /channel/{channelId}/chat/{chatId} {
-      allow read, write: if true;
-    }
-
-    match /{document=**} {
+    
+    // Deny Catch All
+		match /{document=**} {
       allow read, write: if false;
+    }
+
+    // The user is allowed access
+    function userHasAccess() {
+      return exists(/databases/$(database)/documents/access/$(request.auth.uid));
+    }
+
+    // The user has the specified role
+    function userHasRole(role) {
+      return userHasAccess() && role in get(/databases/$(database)/documents/access/$(request.auth.uid)).data.roles;
+    }
+
+    // The user has the console role
+    function isConsoleUser() {
+      return request.auth.uid != null && userHasRole('console');
+    }
+
+    // Read access to user access
+    match /access/{userId} {
+      allow read: if request.auth.uid == userId;
+      allow write: if false;
+    }
+
+    // Read/Write access to own user profile
+    match /profiles/{profileId} {
+      allow list: if request.auth.uid != null;
+      allow create: if request.auth.uid in request.resource.data.owners
+      allow get, update: if request.auth.uid in resource.data.owners
+    }
+
+    // Read access to gyms for signed in users
+    match /gyms/{gymId} {
+      allow read: if request.auth.uid != null;
     }
   }
 }

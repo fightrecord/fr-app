@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import { Icon } from 'react-icons-kit';
 import { caretDown, caretUp, plusSquare } from 'react-icons-kit/fa';
-import { useFrameworkState } from '../../_framework';
+import { useGlobalState } from '../../_framework/wrappers/GlobalStateWrapper';
 
 export default () => {
-  const [{ channels = {}, currentChannel = {} }, dispatch] = useFrameworkState();
+  const { state: { channels = {}, currentChannel = {} }, dispatch } = useGlobalState();
   const [isPicking, setIsPicking] = useState(false);
-  const [addChannel, setAddChannel] = useState(false);
+  const [, setAddChannel] = useState(false);
 
   const selectChannel = channel => {
     dispatch('select-channel', channel);
