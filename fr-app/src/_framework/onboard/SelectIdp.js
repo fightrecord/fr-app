@@ -54,8 +54,7 @@ export default ({
         </div>
         <div className="column">
           <p>
-            Signing in is easy,
-            you can even use one of your social media accounts to speed things up.
+            ...or use an existing account
           </p>
           <Error error={error} />
           <div className="idps">

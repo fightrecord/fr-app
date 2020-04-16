@@ -11,7 +11,7 @@ export default () => {
   const [chat, setChat] = useState([]);
 
   useEffect(() => {
-    if (!channelId) return;
+    if (false || !channelId) return;
 
     firebase.firestore()
       .collection('channel')

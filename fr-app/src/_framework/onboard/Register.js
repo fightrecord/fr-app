@@ -36,16 +36,18 @@ export default ({
           <input type="email" placeholder="Email" onChange={ev => setEmail(ev.target.value)} />
         </div>
         <div className="column">
-          <p>
-            Passwords should contain six characters or more and have at least one lowercase and one uppercase alphabetical character or has at least one lowercase and one numeric character or has at least one uppercase and one numeric character.
-          </p>
           <input type="password" placeholder="New Password" onChange={ev => setPassword(ev.target.value)} />
           <input type="password" placeholder="Confirm Password" onChange={ev => setPasswordCheck(ev.target.value)} />
+          <p className="small">
+            Passwords should contain six characters or more and have at least one lowercase and one uppercase alphabetical character or has at least one lowercase and one numeric character or has at least one uppercase and one numeric character.
+          </p>
           <Error error={error} />
-          <button onClick={() => register()} disabled={!canRegister}>
-            Register
+          <div className="buttons">
+            {onCancel && <button className="secondary" onClick={onCancel}>Cancel</button>}
+            <button onClick={() => register()} disabled={!canRegister}>
+              Register
           </button>
-          {onCancel && <button className="secondary" onClick={onCancel}>Cancel registration</button>}
+          </div>
         </div>
       </div>
     </div>

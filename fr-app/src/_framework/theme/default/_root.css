@@ -23,6 +23,8 @@ body {
 
 h1 {
   font-family: 'Oswald', sans-serif;
+  font-weight: normal;
+  font-size: 1.25rem;
 }
 
 input, button, textarea {
@@ -47,7 +49,8 @@ button:hover {
 
 button:disabled {
   background: #222329;
-  color: #333;
+  color: #555;
+  border-color: #555;
 }
 
 button.secondary {

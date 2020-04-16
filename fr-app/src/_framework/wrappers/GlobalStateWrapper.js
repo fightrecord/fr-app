@@ -27,7 +27,7 @@ export default ({ children }) => {
   };
 
   const reducer = (state, { type, payload }) => {
-    const { notifications, token } = state;
+    const { notifications } = state;
 
     switch (type) {
       case Actions.Notify:

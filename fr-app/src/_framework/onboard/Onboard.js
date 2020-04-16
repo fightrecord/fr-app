@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import firebase from 'firebase/app';
 import cx from 'classnames';
 import { useGlobalState } from '../wrappers/GlobalStateWrapper';
-import Coach from './Coach';
+
 import DisplayName from './DisplayName';
-import Fighter from './Fighter';
 import Logo from './Logo';
 import PickRoles from './PickRoles';
-import Promoter from './Promoter';
 import Reset from './Reset';
 import Register from './Register';
 import SelectIdp from './SelectIdp';
 import SignIn from './SignIn';
+
+import Coach from './coach';
+import Fighter from './fighter';
+import Promoter from './promoter';
 
 const Pages = {
   Logo: 0,
@@ -28,15 +30,14 @@ const Pages = {
 };
 
 const AllRoles = [
-  { key: 'enthusiast', label: '...an Enthusiast' },
-  { key: 'fighter', label: '...a Fighter' },
-  { key: 'coach', label: '...a Coach' },
-  { key: 'promoter', label: '...a Promoter' }
+  { key: 'fighter', label: `I'm a Fighter` },
+  { key: 'coach', label: `I'm a Coach` },
+  { key: 'promoter', label: `I'm a Promoter` }
 ];
 
 export default () => {
   const { state } = useGlobalState();
-  const [pageIndex, setPageIndex] = useState(Pages.Fighter);
+  const [pageIndex, setPageIndex] = useState(Pages.Logo);
   const [roles, setRoles] = useState();
 
   const { profile, token } = state;
@@ -56,20 +57,18 @@ export default () => {
   };
 
   if (token) {
-    if (pageIndex === Pages.PickRoles && roles) {
-      if (roles.fighter && !fighterProfile) {
-        setPageIndex(Pages.Fighter);
-      } else if (roles.coach && !coachProfile) {
-        setPageIndex(Pages.Coach);
-      } else if (roles.promoter && !promoterProfile) {
-        setPageIndex(Pages.Promoter);
-      } else {
-        setPageIndex(Pages.DisplayName);
-      }
-    } else if (profile && !profile.name) {
+    if (profile && !profile.name) {
       setPageIndex(Pages.DisplayName);
     } else if (pageIndex === Pages.SelectIdp || pageIndex === Pages.SignIn) {
       setPageIndex(Pages.PickRoles);
+    } else if (pageIndex === Pages.PickRoles && roles) {
+      setPageIndex(Pages.Fighter);
+    } else if (pageIndex === Pages.Fighter && roles && (!roles.fighter || fighterProfile)) {
+      setPageIndex(Pages.Coach);
+    } else if (pageIndex === Pages.Coach && roles && (!roles.coach || coachProfile)) {
+      setPageIndex(Pages.Promoter);
+    } else if (pageIndex === Pages.Promoter && roles && (!roles.promoter || promoterProfile)) {
+      setPageIndex(Pages.DisplayName);
     }
   } else if (!token && pageIndex === Pages.PickRoles) {
     setPageIndex(Pages.SelectIdp);

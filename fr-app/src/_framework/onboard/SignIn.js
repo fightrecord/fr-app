@@ -45,8 +45,10 @@ export default ({
           <p>
             If you're new to Fight Record then you will need to register to continue.
             </p>
-          <button onClick={onRegister}>Register Now</button>
-          {onCancel && <button className="secondary" onClick={onCancel}>Login using another provider</button>}
+          <div className="buttons">
+            {onCancel && <button className="secondary" onClick={onCancel}>Cancel</button>}
+            <button onClick={onRegister}>Register Now</button>
+          </div>
         </div>
       </div>
     </div>

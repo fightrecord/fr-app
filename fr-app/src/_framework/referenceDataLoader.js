@@ -9,6 +9,7 @@ export default ({ children }) => {
     if (!token) return;
 
     const unsubscribers = [];
+    console.log("Subscribing to reference data");
 
     unsubscribers.push(firebase.firestore()
       .collection('gyms')
@@ -18,9 +19,10 @@ export default ({ children }) => {
       ));
 
     return () => {
+      console.log("Unsubscribing from reference data");
       unsubscribers.forEach(unsubscribe => unsubscribe());
     };
-  }, [token]);
+  }, [token, dispatchSnapshot, dispatchNotification]);
 
   return children;
 };

@@ -14,8 +14,6 @@ export default ({
     const updateProfile = profile => dispatch(Actions.UpdateProfile, profile);
     const signOut = () => firebase.auth().signOut();
 
-    const unsubscribers = [];
-
     const subscribeToProfile = userId => firebase.firestore()
       .collection('profiles')
       .where('owners', 'array-contains', userId)
@@ -31,26 +29,33 @@ export default ({
     };
 
     const onFirebaseAuthChanged = authResult => {
+      let unsubscribeProfile;
+
       if (authResult) {
         authResult.getIdTokenResult()
           .then(({ claims, token }) => {
             const { user_id } = claims;
-            unsubscribers.push(subscribeToProfile(user_id));
+            console.log("Subscribing to profile");
+            unsubscribeProfile = subscribeToProfile(user_id);
             signIn(token, claims);
           }).catch(onError);
       } else {
+        console.log("Unsubscribing from profile");
+        if (unsubscribeProfile) unsubscribeProfile();
         dispatch(Actions.SignOut);
       }
     };
 
-    unsubscribers.push(firebase.auth().onAuthStateChanged(
+    console.log("Subscribing to authentication");
+    const unsubscribeAuth = firebase.auth().onAuthStateChanged(
       onFirebaseAuthChanged,
       dispatchNotification(NotificationTypes.Error)
-    ));
+    );
 
-    return () => unsubscribers.forEach(unsubscribe => {
-      unsubscribe();
-    });
+    return () => {
+      console.log("Unsubscribing from authentication");
+      if (unsubscribeAuth) unsubscribeAuth();
+    };
   }, [dispatch, dispatchNotification]);
 
   return profile ? children : renderOnboarder();

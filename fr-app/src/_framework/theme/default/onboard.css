@@ -47,39 +47,39 @@
 }
 
 .onboard-page {
-  flex: auto;
+  flex: 1;
   min-width: 100vw;
   overflow: hidden;
   display: flex;
 }
 
 .onboard-page > div.darkred-red {
-  background: #e5192c;
+  background: #c21424;
   background: linear-gradient(100deg, #c21424 0%, #c21424 50%, #9c101e 50%, #e5192c 52%, #e5192c 100%);
 }
 
 .onboard-page > div.darkred-white {
-  background: #e5192c;
+  background: #c21424;
   background: linear-gradient(100deg, #c21424 0%, #c21424 50%, #666 50%, #fff 52%, #fff 100%);
 }
 
 .onboard-page > div.red-grey {
-  background: #222329;
+  background: #e5192c;
   background: linear-gradient(100deg, #e5192c 0%, #e5192c 50%, #141418 50%, #222329 52%, #222329 100%);
 }
 
 .onboard-page > div.red-white {
-  background: #fff;
+  background: #e5192c;
   background: linear-gradient(100deg, #e5192c 0%, #e5192c 50%, #666 50%, #fff 52%, #fff 100%);
 }
 
 .onboard-page > div.grey-darkred {
-  background: #c21424;
+  background: #222329;
   background: linear-gradient(100deg, #222329 0%, #222329 50%, #790c17 50%, #c21424 52%, #c21424 100%);
 }
 
 .onboard-page > div.grey-white {
-  background: #fff;
+  background: #222329;
   background: linear-gradient(100deg, #222329 0%, #222329 50%, #666 50%, #fff 52%, #fff 100%);
 }
 
@@ -89,10 +89,11 @@
 }
 
 .onboard-page .row {
-  flex: auto;
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   margin: 1rem -1rem;
+  max-width: 1000px;
 }
 
 .onboard-page .row .column {
@@ -103,9 +104,17 @@
   min-width: 200px;
 }
 
+.onboard-page .row .column .buttons {
+  display: flex;
+}
+
+.onboard-page .row .column .buttons button + button {
+  margin-left: 0.5rem;
+}
+
 .onboard-page button {
-  margin: 0.5rem 0 !important;
-  width: 100% !important;
+  margin: 0.5rem 0;
+  width: 100%;
   outline: none;
 }
 
@@ -154,4 +163,8 @@
 .selected .onboard-content.logo i {
   display: block !important;
   cursor: pointer;
+}
+
+.onboard-content.fighter {
+  justify-content: flex-start;
 }
