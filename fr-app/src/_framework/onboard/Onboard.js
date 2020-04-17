@@ -37,7 +37,7 @@ const AllRoles = [
 
 export default () => {
   const { state } = useGlobalState();
-  const [pageIndex, setPageIndex] = useState(Pages.Logo);
+  const [pageIndex, setPageIndex] = useState(Pages.Fighter);
   const [roles, setRoles] = useState();
 
   const { profile, token } = state;

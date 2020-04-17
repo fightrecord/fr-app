@@ -1,5 +1,5 @@
 import React from 'react';
-import FightRecord from '../../common/FightRecord';
+import FighterRecord from '../../common/FighterRecord';
 
 export default ({
   onComplete = () => null,
@@ -8,8 +8,8 @@ export default ({
 
   return (
     <>
-      <p>It'd be great if you could give us your Amateur/Novice record.</p>
-      <FightRecord editable />
+      <p>It'd also be nice to know your Amateur/Novice record.</p>
+      <FighterRecord editable />
     </>
   );
 };

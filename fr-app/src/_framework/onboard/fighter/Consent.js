@@ -8,7 +8,7 @@ export default ({
 
   return (
     <>
-      <p>Are you happy to share this profile?</p>
+      <p>Are you happy to share your fighter profile?</p>
       <BigTickButton showSadFace />
       <p className="small">
         We'll list your record in our fighter search

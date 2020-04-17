@@ -8,7 +8,7 @@ export default ({
 
   return (
     <>
-      <p>Are you happy to share this profile?</p>
+      <p>Are you happy to share your coaching profile?</p>
       <BigTickButton showSadFace />
       <p className="small">
         We'll list this profile in our coach search

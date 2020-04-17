@@ -206,3 +206,55 @@
   color: #9f0;
   margin-left: 0.25rem;
 }
+
+.fighter-record {
+  display: flex;
+  flex-direction: column;
+}
+
+.fighter-record .parts {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fighter-record .parts .part {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fighter-record .parts .part + .part {
+  margin-left: 0.5rem;
+}
+
+.fighter-record .parts .part input {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.fighter-record .parts .part label {
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.25rem;
+  color: #999;
+  background: #222329;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.big-tick-button {
+  margin: 0.5rem;
+  padding: 1rem;
+  align-self: center;
+  border-radius: 50%;
+  border: solid 3px #ccc;
+  color: #ccc;
+}
+
+.big-tick-button.checked {
+  border-color: #9f0;
+  color: #9f0;
+}

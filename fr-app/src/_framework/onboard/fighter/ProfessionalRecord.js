@@ -1,5 +1,5 @@
 import React from 'react';
-import FightRecord from '../../common/FightRecord';
+import FighterRecord from '../../common/FighterRecord';
 
 export default ({
   onComplete = () => null,
@@ -9,7 +9,7 @@ export default ({
   return (
     <>
       <p>It'd be great if you could give us your Professional record.</p>
-      <FightRecord editable />
+      <FighterRecord editable />
       <p className="small">If you don't have a Professional record, then leaving 0's in the boxes is just fine.</p>
     </>
   );
