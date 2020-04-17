@@ -7,6 +7,7 @@ import 'firebase/firestore';
 import App from './_framework';
 import * as serviceWorker from './serviceWorker';
 
+import onboard from './_modules/onboard';
 import chatModule from './_modules/chat';
 import profileModule from './_modules/profile';
 import homeModule from './_modules/home';
@@ -25,10 +26,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-ReactDOM.render(<App modules={[
-  chatModule,
-  homeModule,
-  profileModule
-]} />, document.getElementById('root'));
+ReactDOM.render((
+  <App
+    modules={[
+      chatModule,
+      homeModule,
+      profileModule
+    ]}
+    renderOnboarder={onboard}
+  />
+), document.getElementById('root'));
 
 serviceWorker.unregister();

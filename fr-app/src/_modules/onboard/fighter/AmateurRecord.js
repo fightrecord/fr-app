@@ -1,5 +1,5 @@
 import React from 'react';
-import FighterRecord from '../../common/FighterRecord';
+import FighterRecord from '../../fighters/FighterRecord';
 
 export default ({
   onComplete = () => null,

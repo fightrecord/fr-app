@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/app';
 import cx from 'classnames';
-import { useGlobalState } from '../wrappers/GlobalStateWrapper';
+import { useGlobalState } from '../../_framework/wrappers/GlobalStateWrapper';
 
 import DisplayName from './DisplayName';
 import Logo from './Logo';
@@ -14,6 +14,8 @@ import SignIn from './SignIn';
 import Coach from './coach';
 import Fighter from './fighter';
 import Promoter from './promoter';
+
+import './Onboard.css';
 
 const Pages = {
   Logo: 0,
@@ -37,7 +39,7 @@ const AllRoles = [
 
 export default () => {
   const { state } = useGlobalState();
-  const [pageIndex, setPageIndex] = useState(Pages.Fighter);
+  const [pageIndex, setPageIndex] = useState(Pages.Logo);
   const [roles, setRoles] = useState();
 
   const { profile, token } = state;

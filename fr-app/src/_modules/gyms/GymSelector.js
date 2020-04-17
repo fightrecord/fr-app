@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Icon } from 'react-icons-kit';
 import cx from 'classnames';
-import { useGlobalState } from '../wrappers/GlobalStateWrapper';
+import { useGlobalState } from '../../_framework/wrappers/GlobalStateWrapper';
 import GymList from './GymList';
 
 const MAX_RESULTS = 3;

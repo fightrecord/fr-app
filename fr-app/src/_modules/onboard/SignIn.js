@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/app';
-import { validEmail } from '../validators';
-import Error from '../common/Error';
+import { validEmail } from '../../_framework/validators';
+import Error from '../../_framework/common/Error';
 
 export default ({
   onRegister = () => null,

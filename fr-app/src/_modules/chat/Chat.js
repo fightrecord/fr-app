@@ -9,10 +9,8 @@ export default () => {
   const { dispatchSnapshot } = useGlobalState();
 
   useEffect(() => {
-    if (false) return;
-
     firebase.firestore()
-      .collection('channel')
+      .collection('channels')
       .onSnapshot(dispatchSnapshot('load-channels', (channel, id) => ({
         ...channel,
         id,

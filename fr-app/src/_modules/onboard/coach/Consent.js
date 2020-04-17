@@ -1,5 +1,5 @@
 import React from 'react';
-import BigTickButton from '../../common/BigTickButton';
+import BigTickButton from '../../../_framework/common/BigTickButton';
 
 export default ({
   onComplete = () => null,
@@ -8,12 +8,12 @@ export default ({
 
   return (
     <>
-      <p>Are you happy to share your fighter profile?</p>
+      <p>Are you happy to share your coaching profile?</p>
       <BigTickButton showSadFace />
       <p className="small">
-        We'll list your record in our fighter search
+        We'll list this profile in our coach search
         which is provided to all premium members.
-        This is a great way to promote yourself,
+        This is a great way to attract clients,
         however we understand if you'd rather not.
     </p>
     </>

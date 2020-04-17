@@ -4,14 +4,13 @@ import ConfigurationWrapper from './wrappers/ConfigurationWrapper';
 import AuthenticationWrapper from './wrappers/AuthenticationWrapper';
 import ReferenceDataLoader from './referenceDataLoader';
 import MainLayout from './layout';
-import Onboard from './onboard';
 import './theme/default';
 
-export default ({ modules }) => (
+export default ({ modules, renderOnboarder = () => null }) => (
   <GlobalStateWrapper>
     <ConfigurationWrapper>
       <ReferenceDataLoader>
-        <AuthenticationWrapper renderOnboarder={() => <Onboard />}>
+        <AuthenticationWrapper renderOnboarder={renderOnboarder}>
           <MainLayout modules={modules} />
         </AuthenticationWrapper>
       </ReferenceDataLoader>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './FighterRecord.css';
 
 export default ({ label, editable = false }) => (
   <div className="fighter-record">

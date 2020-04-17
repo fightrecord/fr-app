@@ -58,5 +58,7 @@ export default ({
     };
   }, [dispatch, dispatchNotification]);
 
-  return profile ? children : renderOnboarder();
+  const onboarding = renderOnboarder();
+
+  return profile ? children : onboarding;
 };

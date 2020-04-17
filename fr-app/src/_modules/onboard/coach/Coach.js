@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Stepper from '../../common/Stepper';
+import Stepper from '../../../_framework/common/Stepper';
 import Gyms from '../Gyms';
 import Consent from './Consent';
 

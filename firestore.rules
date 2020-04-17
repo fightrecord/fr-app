@@ -39,5 +39,10 @@ service cloud.firestore {
     match /gyms/{gymId} {
       allow read: if request.auth.uid != null;
     }
+
+    // Read access to public channels for signed in users
+    match /channels/{channelID} {
+      allow read: if request.auth.uid != null && !resource.data.isPrivate;
+    }
   }
 }
