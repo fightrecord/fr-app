@@ -41,8 +41,13 @@ service cloud.firestore {
     }
 
     // Read access to public channels for signed in users
-    match /channels/{channelID} {
-      allow read: if request.auth.uid != null && !resource.data.isPrivate;
+    match /channels/{channelId} {
+      allow read: if request.auth.uid != null
+
+      match /messages/{messageId} {
+        allow read: if request.auth.uid != null
+        allow create: if request.auth.uid != null
+      }
     }
   }
 }

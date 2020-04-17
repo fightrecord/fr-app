@@ -1,12 +1,15 @@
 import React from 'react';
 import { commentingO } from 'react-icons-kit/fa';
+import ChatStateWrapper from './ChatStateWrapper';
 import Chat from './Chat';
 import './default.css';
 
 const render = () => (
-  <div className="chat-content">
-    <Chat />
-  </div>
+  <ChatStateWrapper>
+    <div className="chat-content">
+      <Chat />
+    </div>
+  </ChatStateWrapper>
 );
 
 export default {

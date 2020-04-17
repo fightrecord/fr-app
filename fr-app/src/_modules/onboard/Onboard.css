@@ -134,7 +134,7 @@
 .onboard-content.logo .inner {
   flex: 0 0 150px;
   min-width: 150px;
-  background-image: url(./assets/logo.png);
+  background-image: url(../../_framework/theme/default/assets/logo.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

@@ -5,18 +5,20 @@ import firebase from 'firebase/app';
 import { Icon } from 'react-icons-kit';
 import { commentingO, user } from 'react-icons-kit/fa';
 import { useGlobalState } from '../../_framework/wrappers/GlobalStateWrapper';
+import { useChatState } from './ChatStateWrapper';
 
 export default () => {
-  const { state: { currentChannel: { id: channelId } = {}, userId } } = useGlobalState();
+  const { state: { claims: { user_id: userId } } } = useGlobalState();
+  const { state: { currentChannel: { id: channelId } = {} } } = useChatState();
   const [chat, setChat] = useState([]);
 
   useEffect(() => {
     if (false || !channelId) return;
 
     firebase.firestore()
-      .collection('channel')
+      .collection('channels')
       .doc(channelId)
-      .collection('chat')
+      .collection('messages')
       .onSnapshot(snap => {
         const entries = [];
 
@@ -34,6 +36,7 @@ export default () => {
       });
   }, [channelId]);
 
+  let lastTime;
   return (
     <div className="channel-content">
       {chat.length < 1 && (
@@ -42,22 +45,33 @@ export default () => {
           <p>This channel is empty</p>
         </div>
       )}
-      {chat.map(({ author, created, id, message }) => (
-        <div className={cx('chat-entry', { mine: author === userId })} key={id}>
-          <div className="avatar">
-            <Icon size={24} icon={user} />
-          </div>
-          <div className="content">
-            <div className="meta">
-              {author}
-              <span className="time">{created.toFormat('HH:mm')}</span>
+      {chat.map(({ authorId, author, created, id, message }) => {
+        const formattedTime = created.toFormat('yyyyMMddHHmm');
+
+        const content = (
+          <div className={cx('chat-entry', {
+            'same-minute': formattedTime === lastTime,
+            mine: authorId === userId
+          })} key={id}>
+            <div className="avatar">
+              <Icon size={24} icon={user} />
             </div>
-            <div className="message">
-              {message}
+            <div className="content">
+              <div className="meta">
+                {author}
+                <span className="time">{created.toFormat('HH:mm')}</span>
+              </div>
+              <div className="message">
+                {message}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+
+        lastTime = formattedTime;
+
+        return content;
+      })}
     </div>
   );
 };

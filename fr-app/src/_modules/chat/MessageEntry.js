@@ -4,22 +4,25 @@ import { DateTime } from 'luxon';
 import { Icon } from 'react-icons-kit';
 import { send } from 'react-icons-kit/fa';
 import { useGlobalState } from '../../_framework/wrappers/GlobalStateWrapper';
+import { useChatState } from './ChatStateWrapper';
 
 const ENTER_KEY = 13;
 
 export default () => {
-  const { state: { currentChannel: { id: channelId } = {}, userId } } = useGlobalState();
+  const { state: { claims: { user_id, name } } } = useGlobalState();
+  const { state: { currentChannel: { id: channelId } = {} } } = useChatState();
   const [message, setMessage] = useState('');
 
   const sendMessage = () => {
     firebase.firestore()
-      .collection('channel')
+      .collection('channels')
       .doc(channelId)
-      .collection('chat')
+      .collection('messages')
       .doc()
       .set({
         created: DateTime.utc().toISO(),
-        author: userId,
+        author: name,
+        authorId: user_id,
         message
       });
 
