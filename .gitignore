@@ -42,3 +42,5 @@ yarn-error.log*
 .yarn-integrity
 
 /public/*
+.keys
+_localdata
