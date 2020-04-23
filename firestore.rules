@@ -49,5 +49,30 @@ service cloud.firestore {
         allow create: if request.auth.uid != null
       }
     }
+
+    // Console read access
+    match /classes/{classId} {
+      allow read: if isConsoleUser();
+    }
+    
+    match /events/{eventId} {
+      allow read: if isConsoleUser();
+    
+      match /bouts/{boutId} {
+        allow read: if isConsoleUser();
+      }
+    }
+    
+    match /fighters/{fighterId} {
+      allow read: if isConsoleUser();
+    }
+    
+    match /orphanedBouts/{boutId} {
+      allow read: if isConsoleUser();
+    }
+    
+    match /teams/{teamId} {
+      allow read: if isConsoleUser();
+    }
   }
 }

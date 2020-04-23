@@ -85,7 +85,6 @@ module.exports = (pathToData, terms) => {
         },
       },
       name: post_title,
-      alias: mma_sport_magazine_fighter_nickname,
       gender: terms[_yoast_wpseo_primary_gender],
       dob: mma_sport_magazine_fighter_profile_date_year &&
         mma_sport_magazine_fighter_profile_date_month &&
@@ -111,6 +110,7 @@ module.exports = (pathToData, terms) => {
       ],
       media: {
         websiteLink: guid,
+        instagram: mma_sport_magazine_fighter_nickname,
         images: {
           medium: mma_sport_magazine_fighter_profile_medium_image,
           small: mma_sport_magazine_fighter_profile_small_image,
