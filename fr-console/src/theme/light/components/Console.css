@@ -1,0 +1,22 @@
+.console {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.console .content {
+  flex: auto;
+  display: flex;
+}
+
+.console .pages {
+  flex: auto;
+  display: flex;
+}
+
+.console .page {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}

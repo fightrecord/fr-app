@@ -6,6 +6,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import './theme/light';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIcgUt_Q1a-lGmG5457DC_EN0vlBn4XT8",

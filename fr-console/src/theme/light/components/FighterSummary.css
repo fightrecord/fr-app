@@ -1,0 +1,81 @@
+.fighter-summary {
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fighter-summary + .fighter-summary {
+  margin-top: 0.1rem;
+}
+
+.fighter-summary .info {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  padding: 0.5rem;
+  border-bottom: solid 1px #ccc;
+}
+
+.fighter-summary .info + .info {
+  margin-left: 0.1rem;
+}
+
+.fighter-summary .info h1 {
+  font-size: 1.1rem;
+}
+
+.fighter-summary .info.basic {
+  flex: 6;
+}
+
+.fighter-summary .info.record,
+.fighter-summary .info.location {
+  flex: 5;
+}
+
+.fighter-summary .detail {
+  flex: 1;
+  display: flex;
+  padding: 0.1rem;
+}
+
+.fighter-summary .detail label,
+.fighter-summary .detail p {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fighter-summary .detail label:after {
+  content: ':';
+  margin-right: 0.5rem;
+}
+
+.fighter-summary .detail.discipline label:after {
+  content: none;
+}
+
+.fighter-summary .detail label {
+  flex: 2;
+  min-width: 60px;
+}
+
+.fighter-summary .detail p {
+  flex: 3;
+}
+
+.fighter-summary .detail.discipline p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fighter-summary .detail.discipline p span {
+  flex: 1;
+}
+
+p.no-record {
+  font-size: 0.8rem;
+  padding: 1rem;
+  text-align: center;
+}

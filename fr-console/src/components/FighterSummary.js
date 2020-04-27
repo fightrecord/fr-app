@@ -1,51 +1,77 @@
 import React from 'react';
+import { asFeetAndInches } from '../conversion';
 
 export default ({ fighter }) => {
   const {
-    age, city, country, gender, height, name,
-    region, teamName, weight
+    age, city, className, country, gender, height, name,
+    record, region, teamName, weight
   } = fighter;
+
+  const filteredRecord = record
+    .filter(({ discipline, won, lost, draw }) => discipline || won || lost || draw);
 
   return (
     <div className="fighter-summary">
       <div className="info basic">
         <h1>{name}</h1>
-        <h2>{teamName || 'N/A'}</h2>
+        <h2>{teamName || ''}</h2>
       </div>
       <div className="info bio">
         <div className="detail age">
           <label>Age</label>
-          <p>{age || 'N/A'}</p>
+          <p>{age || ''}</p>
         </div>
         <div className="detail gender">
           <label>Gender</label>
-          <p>{gender || 'N/A'}</p>
+          <p>{gender || ''}</p>
         </div>
+      </div>
+      <div className="info metrics">
         <div className="detail height">
           <label>Height</label>
-          <p>{height ? `${height}m` : 'N/A'}</p>
+          <p>{height ? `${height}m (${asFeetAndInches(height)})` : ''}</p>
         </div>
         <div className="detail weight">
           <label>Weight</label>
-          <p>{weight ? `${weight}kg` : 'N/A'}</p>
+          <p>{weight ? `${weight}kg` : ''}</p>
+        </div>
+        <div className="detail class">
+          <label>Class</label>
+          <p>{className ? className : ''}</p>
         </div>
       </div>
       <div className="info location">
         <div className="detail country">
           <label>Country</label>
-          <p>{country || 'N/A'}</p>
+          <p>{country || ''}</p>
         </div>
         <div className="detail region">
           <label>Region</label>
-          <p>{region || 'N/A'}</p>
+          <p>{region || ''}</p>
         </div>
         <div className="detail city">
           <label>City</label>
-          <p>{city || 'N/A'}</p>
+          <p>{city || ''}</p>
         </div>
-
       </div>
-      <pre>{JSON.stringify(fighter, null, 2)}</pre>
+      <div className="info record">
+        {filteredRecord.length > 0
+          ? filteredRecord
+            .map(({ discipline, won, lost, draw }, key) => (
+              <div className="detail discipline" key={key}>
+                <label>{discipline}</label>
+                <p>
+                  <span>W:{won}</span>
+                  <span>L:{lost}</span>
+                  <span>D:{draw}</span>
+                </p>
+              </div>
+            )) : (
+            <p className="no-record">
+              No record for this fighter
+            </p>
+          )}
+      </div>
     </div>
   )
 };

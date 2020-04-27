@@ -2,6 +2,8 @@ import React from 'react';
 
 export default () => (
   <div className="menu">
-    Menu
+    <ul>
+      <li>Fighters</li>
+    </ul>
   </div>
 );

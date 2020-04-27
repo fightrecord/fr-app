@@ -1,0 +1,13 @@
+.page.fighters .title {
+  flex: 0 0 40px;
+}
+
+.page.fighters .list {
+  flex: auto;
+  max-height: 800px;
+  overflow-y: scroll;
+}
+
+.page.fighters .list.scroller {
+  display: block;
+}
