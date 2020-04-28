@@ -2,10 +2,7 @@ import firebase from 'firebase/app';
 import { DateTime } from 'luxon';
 import { loadClassesById } from './classes';
 import { loadTeamsById } from './teams';
-
-const dataQualityRules = [
-
-];
+import { nextAlphabetically } from './common';
 
 const calculatDataQualityScore = fighter => {
 
@@ -36,13 +33,12 @@ const hydrate = (classes, teams) => fighter => {
   return fighter;
 };
 
-export const loadRecentFighters = async () => {
+const queryFighters = async (ref, orderBy, direction, limit) => {
   try {
 
-    const snapshot = await firebase.firestore()
-      .collection('fighters')
-      .orderBy('_meta.modified', 'desc')
-      .limit(20)
+    const snapshot = await ref
+      .orderBy(orderBy, direction)
+      .limit(limit)
       .get();
 
     const result = [];
@@ -70,3 +66,22 @@ export const loadRecentFighters = async () => {
     console.error(error);
   }
 };
+
+export const loadOrderedFighters = (orderBy, direction, limit) => {
+  return queryFighters(
+    firebase.firestore().collection('fighters'),
+    orderBy, direction, limit);
+}
+
+export const searchOrderedFighters = (search, limit) => {
+  const searchLower = search.toLowerCase();
+  const searchNext = nextAlphabetically(searchLower);
+
+  return queryFighters(
+    firebase.firestore()
+      .collection('fighters')
+      .where('searchableName', '>=', searchLower)
+      .where('searchableName', '<', searchNext),
+    'searchableName', 'asc', limit
+  );
+}

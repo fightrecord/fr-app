@@ -1,0 +1,39 @@
+.selector {
+  display: flex;
+}
+
+.selector .option {
+  font-size: 0.7rem;
+  color: #eee;
+  background: #999;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.selector .option:hover {
+  color: #fff;
+}
+
+.selector .option.selected {
+  color: #fff;
+  background: #555;
+}
+
+.selector .option.disabled {
+  color: #eee;
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+.selector .option + .option {
+  margin-left: 0.1rem;
+}
+
+.selector label {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #fff;
+  background: #222329;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.1rem;
+}

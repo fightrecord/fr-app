@@ -83,17 +83,15 @@ i {
 }
 
 input {
-  background: #141418;
-  border: solid 1px #333;
-  border-radius: 3px;
+  background: #fff;
+  border: solid 1px #ccc;
   box-sizing: border-box;
-  padding: 0.5rem 1rem;
-  color: #fff;
+  padding: 0.25rem 1rem;
+  color: #666;
   margin: 0.1rem;
-  margin-bottom: 0.5rem;
   outline: none;
 }
 
 input::placeholder {
-  color: #666;
+  color: #ddd;
 }

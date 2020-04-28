@@ -7,13 +7,13 @@ const requiresNameRule = ({ name = '' }) => {
   }
   // Good at least one name having 2 letters or more
   if (name.length >= 2) {
-    return [50, ['Only one name given, you could add a surname or first name']]; // Score 50, 1 action
+    return [50, ['Lowered fighter score. Only one name given.']]; // Score 50, 1 action
   }
-  return [0, ['This fighter record is missing a name']]; // Score 0, 1 action
+  return [0, ['This fighter is missing a name.']]; // Score 0, 1 action
 };
 
 const requiresTeamRule = ({ team }) => team ? [75, []] : [0, [
-  'This fighter record has no team specified'
+  'This fighter has no team specified.'
 ]];
 
 const requiresMetricsRule = ({ weight, height }) => {
@@ -21,10 +21,10 @@ const requiresMetricsRule = ({ weight, height }) => {
   const actions = [];
   // Check the weight
   if (weight && weight > 0) score += 25; // Having a weight scores 25
-  else actions.push('This fighter record has no weight');
+  else actions.push('This fighter has no weight.');
   // Check the height
   if (height && height > 0) score += 25; // Having a height scores 25
-  else actions.push('This fighter record has no height');
+  else actions.push('This fighter has no height.');
 
   return [score, actions];
 };
@@ -33,7 +33,6 @@ const requiresRecordRule = ({ record }) => {
   let score = 0;
   const actions = [];
   if (record && record.length > 0) {
-    score += 10;
     score += record.reduce((acc, { discipline, draw, lost, won }) => {
       let recordScore = 0;
       // A full record with a discipline scores 450
@@ -43,8 +42,9 @@ const requiresRecordRule = ({ record }) => {
       recordScore += won !== null ? 100 : 0;
       return acc + recordScore;
     }, 0);
+    actions.push('This fighter has an incomplete record.')
   } else {
-    actions.push('No fight records listed for this fighter record')
+    actions.push('No fight records listed for this fighter.')
   }
 
   return [score, actions];

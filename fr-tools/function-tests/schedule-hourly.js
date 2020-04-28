@@ -7,4 +7,4 @@ admin.initializeApp({
   databaseURL: "https://fight-record-dev.firebaseio.com"
 });
 
-updateDataQualityScores(10, admin);
+updateDataQualityScores(1000, admin);

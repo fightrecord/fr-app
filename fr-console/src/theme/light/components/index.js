@@ -1,5 +1,12 @@
 import './Console.css';
 import './Fighters.css';
 import './FighterSummary.css';
+import './FighterSummaryBasic.css';
+import './FighterSummaryBio.css';
+import './FighterSummaryLocation.css';
+import './FighterSummaryMetrics.css';
+import './FighterSummaryQuality.css';
+import './FighterSummaryRecord.css';
 import './Header.css';
 import './Menu.css';
+import './Selector.css';

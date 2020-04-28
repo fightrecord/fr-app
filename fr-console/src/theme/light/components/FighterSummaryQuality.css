@@ -1,0 +1,78 @@
+.fighter-summary .info.quality {
+  flex: 0 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.fighter-summary .info.quality p {
+  font-size: 0.6rem;
+  color: #fff;
+  transform: rotate(-90deg);
+}
+
+.fighter-summary.quality_0 .info.quality {
+  background: #f43;
+  border: solid 3px #f43;
+}
+
+.fighter-summary.quality_1 .info.quality {
+  background: #f63;
+}
+
+.fighter-summary.quality_2 .info.quality {
+  background: #fc3;
+}
+
+.fighter-summary.quality_2 .info.quality p {
+  color: #333;
+}
+
+.fighter-summary.quality_3 .info.quality {
+  background: #6f3;
+}
+
+.fighter-summary .info.quality-report {
+  flex: 10;
+  max-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  transition: max-width 0.25s ease-in-out, padding-left 0.2s ease-in-out, padding-right 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.fighter-summary .info.quality-report p {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fighter-summary .info.quality-report.shown {
+  max-width: 1000px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.fighter-summary.quality_0 .info.quality-report {
+  background: #fcb;
+  border-right: solid 3px #f43;
+}
+
+.fighter-summary.quality_1 .info.quality-report {
+  background: #fc9;
+  border-right: solid 3px #f63;
+}
+
+.fighter-summary.quality_2 .info.quality-report {
+  background: #fe9;
+  border-right: solid 3px #fc3;
+}
+
+.fighter-summary.quality_3 .info.quality-report {
+  background: #cf9;
+  border-right: solid 3px #6f3;
+}
+

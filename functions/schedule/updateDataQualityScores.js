@@ -2,12 +2,7 @@ const admin = require('firebase-admin');
 const { DateTime } = require('luxon');
 const dataQualityRules = require('./dataQualityRules');
 
-const delay = ms => new Promise(resolve => {
-  setTimeout(() => resolve(), ms);
-});
-
 const processSnapshot = snapshot => {
-  console.log('Processing snapshot', snapshot.docs.length, 'docs.');
   const fighters = [];
 
   snapshot.docs.forEach(doc => {
@@ -23,7 +18,6 @@ const processSnapshot = snapshot => {
 
 const assessDataQuality = fighter => {
   const { _id, _meta } = fighter;
-  console.log('Computing data quality score for fighter', _id);
 
   const now = DateTime.utc().toISO();
   const quality = dataQualityRules.reduce(({ score, actions }, rule) => {
@@ -42,8 +36,17 @@ const assessDataQuality = fighter => {
     })
   });
 
-  console.log('Fighter', _id, 'scores', quality.score);
   return updated;
+};
+
+const updateSearchableFields = fighter => {
+  const { name } = fighter;
+
+  const searchable = {
+    searchableName: name.toLowerCase()
+  };
+
+  return Object.assign(fighter, searchable);
 };
 
 const updateFighter = (arr, app = admin) => new Promise(resolve => {
@@ -52,16 +55,14 @@ const updateFighter = (arr, app = admin) => new Promise(resolve => {
   }
 
   const fighter = arr[0];
-  const { _id } = fighter;
-  console.log('Storing updated record for fighter', _id);
+  const { _id, _quality: { score } } = fighter;
 
   app.firestore()
     .collection('fighters')
     .doc(_id)
     .set(fighter)
-    .then(() => delay(20))
     .then(() => updateFighter(arr.slice(1), app))
-    .then(result => resolve([...result, 'Updated ' + _id]))
+    .then(result => resolve([...result, `Updated fighter ${_id}, score=${score}`]))
     .catch(console.error);
 });
 
@@ -89,6 +90,8 @@ module.exports = (batchSize, app = admin) => loadOldestRecords(batchSize, app)
   })
   // Do the Data quality assessment
   .then(fighters => fighters.map(assessDataQuality))
+  // Update searchable fields
+  .then(fighters => fighters.map(updateSearchableFields))
   // Store the results
   .then(fighters => updateFighter(fighters, app))
   .then(console.log)

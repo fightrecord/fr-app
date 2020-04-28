@@ -39,3 +39,16 @@ export const loadByIds = collection => async ids => {
 
   return result;
 };
+
+export const nextAlphabetically = text => text
+  .toLowerCase()
+  .split('')
+  .map((char, index) => {
+    const nextLexigraph = c => {
+      const next = String.fromCharCode(c.charCodeAt(0) + 1);
+      return next === '{' ? 'aa' : next;
+    };
+
+    return index < text.length - 1 ? char : nextLexigraph(char);
+  })
+  .join('');

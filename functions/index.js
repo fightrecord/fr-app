@@ -9,5 +9,4 @@ exports.appmail = functions.https
 const schedule = require('./schedule');
 exports.hourlyFightersBatch = functions.pubsub
   .schedule('0 * * * *')
-  .timeZone('utc')
   .onRun(schedule.hourly);

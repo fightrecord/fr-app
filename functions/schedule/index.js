@@ -1,6 +1,6 @@
 const updateDataQualityScores = require('./updateDataQualityScores');
 
-const BATCH_SIZE = 20;
+const BATCH_SIZE = 100;
 
 exports.hourly = (context) => {
   console.log('Hourly job', JSON.stringify(context, null, 2));

@@ -13,6 +13,16 @@
           "order": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "fighters",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "searchableName",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ],
   "fieldOverrides": []
