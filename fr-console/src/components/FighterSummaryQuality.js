@@ -13,7 +13,7 @@ export default ({ fighter: { _quality } = {} }) => {
         <p>{score}</p>
       </div>
       <div className={cx('info', 'quality-report', { shown: showQualityReport })} onClick={toggleQualityReport}>
-        {actions.map(action => <p>{action}</p>)}
+        {actions.map((action, key) => <p key={key}>{action}</p>)}
       </div>
     </>
   );

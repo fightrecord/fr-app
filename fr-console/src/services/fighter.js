@@ -67,21 +67,47 @@ const queryFighters = async (ref, orderBy, direction, limit) => {
   }
 };
 
-export const loadOrderedFighters = (orderBy, direction, limit) => {
-  return queryFighters(
+export const loadOrderedFighters = async (orderBy, direction, limit) => {
+  const results = await queryFighters(
     firebase.firestore().collection('fighters'),
     orderBy, direction, limit);
-}
 
-export const searchOrderedFighters = (search, limit) => {
+  return results;
+};
+
+export const searchOrderedFighters = async (search, limit) => {
   const searchLower = search.toLowerCase();
   const searchNext = nextAlphabetically(searchLower);
 
-  return queryFighters(
+  const results = await queryFighters(
     firebase.firestore()
       .collection('fighters')
       .where('searchableName', '>=', searchLower)
       .where('searchableName', '<', searchNext),
     'searchableName', 'asc', limit
   );
-}
+
+  return results;
+};
+
+export const loadFighterHistory = async fighterId => {
+  console.log('Load history for', fighterId);
+
+  const bouts = await firebase.firestore()
+    .collectionGroup('bouts')
+    .where('_meta.fighterIds', 'array-contains', fighterId)
+    .get()
+    .then(snap => {
+      const bouts = snap.docs.map(doc => ({
+        ...doc.data(),
+        _id: doc.id
+      }));
+
+      console.log(bouts)
+
+      return bouts;
+    })
+    .catch(console.error);
+
+  return bouts;
+};

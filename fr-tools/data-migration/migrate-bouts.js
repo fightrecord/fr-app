@@ -21,8 +21,8 @@ exports.groupBouts = allData => {
   const { bouts } = allData;
 
   const grouped = bouts.reduce((acc, bout) => {
-    const { fighterIds } = bout;
-    const boutId = fighterIds.join('-');
+    const { fighterIds, method, round } = bout;
+    const boutId = [...fighterIds, method, round].join('-');
 
     return {
       ...acc,

@@ -1,4 +1,5 @@
 const admin = require('firebase-admin');
+const { DateTime } = require('luxon');
 const ingestData = require('./migrate-ingest');
 
 const serviceAccount = require("../.keys/fight-record-dev-firebase-adminsdk-8y0j7-4e1cf46df4.json");
@@ -103,14 +104,14 @@ const writeToFirestore = async data => {
       .then(() => storeFighter(arr.slice(1)));
   };
 
-  storeFighter(fighterArray);
+  storeFighter(fighterArray);*/
 
   // Store the events
   logResult('events')(await Promise.all(
     Object.values(events).map(ev => db
       .collection('events')
       .add(ev))
-  ));*/
+  ));
 
   // Load all Events
   const allEvents = await db.collection('events')
@@ -125,14 +126,15 @@ const writeToFirestore = async data => {
 
   // Store the bouts
   let boutCount = 0;
-  const boutArray = Object.values(bouts).slice(78);
+  const boutArray = Object.values(bouts).map(arr => arr[0]);
 
-  const mapBout = async allBouts => {
-    const bout = allBouts[0];
+  const mapBout = async bout => {
     const mapped = { ...bout };
+    const now = DateTime.utc();
 
+    const eventId = findEvent(bout.event);
     mapped.event = {
-      id: findEvent(bout.event),
+      id: eventId,
       name: bout.event.length > 0 ? bout.event : undefined
     };
 
@@ -166,6 +168,13 @@ const writeToFirestore = async data => {
     mapped.winnerId = winner ? winner._id : bout.winnerId;
     delete mapped.fighterIds;
 
+    mapped._meta = {
+      created: now.toISO(),
+      modified: now.toISO(),
+      eventId,
+      fighterIds: boutFightersArr.map(({ _id }) => _id)
+    };
+
     return mapped;
   };
 
@@ -176,15 +185,16 @@ const writeToFirestore = async data => {
 
     const boutRef = event.id
       ? db.collection('events').doc(event.id).collection('bouts')
-      : db.collection('orphanedBouts');
+      : db.collection('bouts');
 
     boutRef.add(JSON.parse(JSON.stringify(mapped)))
       .then(doc => console.log(boutCount, 'Event', event.id, 'Bout', doc.id))
       .then(() => {
         boutCount++;
-        return delay(20);
+        return delay(10);
       })
-      .then(() => storeBout(arr.slice(1)));
+      .then(() => storeBout(arr.slice(1)))
+      .catch(console.error);
   };
 
   storeBout(boutArray);
@@ -192,5 +202,4 @@ const writeToFirestore = async data => {
 
 ingestData()
   .then(writeToFirestore)
-  .then(() => null)
   .catch(console.error);

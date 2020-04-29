@@ -1,0 +1,96 @@
+.bout-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.bout-summary + .bout-summary {
+  border-top: solid 1px #444;
+}
+
+.bout-summary > .row {
+  display: flex;
+}
+
+.bout-summary > .row .info {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background: #666;
+  color: #eee;
+  padding: 0.5rem;
+}
+
+.bout-summary > .row .info + .info {
+  margin-left: 0.1rem;
+}
+
+.bout-summary > .row .info h1 {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bout-summary > .row .info h2 {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ccc;
+}
+
+.bout-summary > .row .detail {
+  flex: 1;
+  display: flex;
+  padding: 0.1rem;
+}
+
+.bout-summary > .row .detail label,
+.bout-summary > .row .detail p {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bout-summary > .row .detail label:after {
+  content: ':';
+  margin-right: 0.5rem;
+}
+
+.bout-summary > .row .detail label {
+  flex: 2;
+  color: #ccc;
+  min-width: 60px;
+}
+
+.bout-summary > .row .detail p {
+  flex: 3;
+  color: #eee;
+}
+
+.bout-summary .info.vs {
+  flex: 0 0 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.bout-summary .info.vs p {
+  font-size: 0.6rem;
+  color: #fff;
+}
+
+.bout-summary.loss .info.result {
+  border-left: solid 5px #f43;
+}
+
+.bout-summary.draw .info.result {
+  border-left: solid 5px #fc3;
+}
+
+.bout-summary.win .info.result {
+  border-left: solid 5px #6f3;
+}

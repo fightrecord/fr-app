@@ -1,13 +1,11 @@
-const requiresNameRule = ({ name = '' }) => {
+const admin = require('firebase-admin');
+
+const requiresNameRule = async ({ name = '' }) => {
   const parts = name.split(' ');
-  // Pristine 2 names or more with each name having 2 letters or more
-  if (parts.length >= 2 && parts.reduce((a, p) => a && p.length >= 2, true)) {
+  // Pristine 2 names or more with each name having 1 letter or more
+  if (parts.length >= 2 && parts.reduce((a, p) => a && p.length >= 1, true)) {
     // Score 100, no actions
     return [100, []];
-  }
-  // Good at least one name having 2 letters or more
-  if (name.length >= 2) {
-    return [50, ['Lowered fighter score. Only one name given.']]; // Score 50, 1 action
   }
   return [0, ['This fighter is missing a name.']]; // Score 0, 1 action
 };
@@ -16,7 +14,7 @@ const requiresTeamRule = ({ team }) => team ? [75, []] : [0, [
   'This fighter has no team specified.'
 ]];
 
-const requiresMetricsRule = ({ weight, height }) => {
+const requiresMetricsRule = async ({ weight, height }) => {
   let score = 0;
   const actions = [];
   // Check the weight
@@ -29,7 +27,7 @@ const requiresMetricsRule = ({ weight, height }) => {
   return [score, actions];
 };
 
-const requiresRecordRule = ({ record }) => {
+const requiresRecordRule = async ({ record }) => {
   let score = 0;
   const actions = [];
   if (record && record.length > 0) {
@@ -50,9 +48,45 @@ const requiresRecordRule = ({ record }) => {
   return [score, actions];
 };
 
+const snapshotToArray = snap => snap.docs.map(doc => Object.assign(
+  doc.data(),
+  { _id: doc.id }
+));
+
+const unconfirmedRecord = async ({ _id, record }, app = admin) => {
+  try {
+    const boutSnapshot = await app.firestore()
+      .collectionGroup('bouts')
+      .where('_meta.fighterIds', 'array-contains', _id)
+      .get();
+
+    const bouts = snapshotToArray(boutSnapshot);
+
+    const unconfirmedRecord = bouts.reduce((acc, { wasDraw, winnerId }) => {
+      if (wasDraw) acc.draw += 1;
+      else if (winnerId === _id) acc.won += 1;
+      else acc.lost += 1;
+
+      return acc;
+    }, {
+      unConfirmed: true,
+      won: 0,
+      lost: 0,
+      draw: 0
+    });
+
+    return [0, [], { record: [...record, unconfirmedRecord] }];
+  } catch (error) {
+    console.error(error);
+    return [0, []];
+  }
+
+};
+
 module.exports = [
   requiresNameRule,
   requiresTeamRule,
   requiresMetricsRule,
-  requiresRecordRule
+  requiresRecordRule,
+  unconfirmedRecord
 ];

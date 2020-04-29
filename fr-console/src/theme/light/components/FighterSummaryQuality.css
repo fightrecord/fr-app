@@ -26,12 +26,13 @@
   background: #fc3;
 }
 
-.fighter-summary.quality_2 .info.quality p {
-  color: #333;
-}
-
 .fighter-summary.quality_3 .info.quality {
   background: #6f3;
+}
+
+.fighter-summary.quality_2 .info.quality p,
+.fighter-summary.quality_3 .info.quality p {
+    color: #333;
 }
 
 .fighter-summary .info.quality-report {

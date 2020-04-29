@@ -16,20 +16,24 @@ const processSnapshot = snapshot => {
   return fighters;
 };
 
-const assessDataQuality = fighter => {
+const assessDataQuality = app => async fighter => {
   const { _id, _meta } = fighter;
 
   const now = DateTime.utc().toISO();
-  const quality = dataQualityRules.reduce(({ score, actions }, rule) => {
-    const [ruleScore, ruleActions] = rule(fighter);
-    return {
-      score: score + ruleScore,
-      actions: [...actions, ...ruleActions]
-    };
-  }, { score: 0, actions: [] });
+  const results = await Promise.all(dataQualityRules.map(rule => rule(fighter, app)));
 
-  const updated = Object.assign(fighter, {
-    _quality: quality,
+  const quality = results.reduce((
+    { score, actions, amends },
+    [ruleScore, ruleActions, ruleAmends]
+  ) => ({
+    score: score + ruleScore,
+    actions: [...actions, ...ruleActions],
+    amends: Object.assign(amends, ruleAmends)
+  }), { score: 0, actions: [], amends: {} });
+
+  const { score, actions, amends } = quality;
+  const updated = Object.assign(fighter, amends, {
+    _quality: { score, actions },
     _meta: Object.assign(_meta, {
       lastQualityAssessment: now,
       modified: now
@@ -89,7 +93,7 @@ module.exports = (batchSize, app = admin) => loadOldestRecords(batchSize, app)
     return legacyRecords.length ? legacyRecords : results[0];
   })
   // Do the Data quality assessment
-  .then(fighters => fighters.map(assessDataQuality))
+  .then(fighters => Promise.all(fighters.map(assessDataQuality(app))))
   // Update searchable fields
   .then(fighters => fighters.map(updateSearchableFields))
   // Store the results

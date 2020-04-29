@@ -1,12 +1,15 @@
 import React from 'react';
 
-export default ({ fighter: { record } = {} }) => {
+export default ({
+  fighter: { record } = {},
+  onClick = () => null
+}) => {
 
   const filteredRecord = record
     .filter(({ discipline, won, lost, draw }) => discipline || won || lost || draw);
 
   return (
-    <div className="info record">
+    <div className="info record" onClick={onClick}>
       {filteredRecord.length > 0
         ? filteredRecord
           .map(({ discipline, won, lost, draw }, key) => (

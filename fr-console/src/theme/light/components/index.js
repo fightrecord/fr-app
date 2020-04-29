@@ -1,5 +1,8 @@
+import './Bouts.css';
+import './BoutSummary.css';
 import './Console.css';
 import './Fighters.css';
+import './FighterHistory.css';
 import './FighterSummary.css';
 import './FighterSummaryBasic.css';
 import './FighterSummaryBio.css';

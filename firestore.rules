@@ -57,21 +57,17 @@ service cloud.firestore {
     
     match /events/{eventId} {
       allow read: if isConsoleUser();
-    
-      match /bouts/{boutId} {
-        allow read: if isConsoleUser();
-      }
     }
     
     match /fighters/{fighterId} {
       allow read: if isConsoleUser();
     }
     
-    match /orphanedBouts/{boutId} {
+    match /teams/{teamId} {
       allow read: if isConsoleUser();
     }
     
-    match /teams/{teamId} {
+    match /{anyPath=**}/bouts/{boutId} {
       allow read: if isConsoleUser();
     }
   }
