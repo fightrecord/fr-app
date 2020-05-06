@@ -7,6 +7,12 @@ exports.appmail = functions.https
   .onRequest(require('./appmail'));
 
 const schedule = require('./schedule');
-exports.hourlyFightersBatch = functions.pubsub
+// Runs batch (100) quality assessment report on every hour
+exports.hourlyAssessment = functions.pubsub
   .schedule('0 * * * *')
   .onRun(schedule.hourly);
+
+// Runs metrics and quality report at 23:55:00 every day
+exports.dailyReport = functions.pubsub
+  .schedule('55 23 * * *')
+  .onRun(schedule.daily);

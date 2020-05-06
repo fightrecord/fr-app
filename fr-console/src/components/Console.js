@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import Menu from './Menu';
-import Fighters from './Fighters';
+import Events from './events';
+import Fighters from './fighters';
 
 export default () => (
   <div className="console">
@@ -9,7 +10,8 @@ export default () => (
     <div className="content">
       <Menu />
       <div className="pages">
-        <Fighters />
+        {/*Fighters />*/}
+        <Events />
       </div>
     </div>
   </div>

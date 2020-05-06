@@ -1,0 +1,102 @@
+.page.smartsearch .title {
+  flex: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.page.smartsearch .title .selectors {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page.smartsearch .title .selectors .selector + .selector{
+  margin-left: 2rem;
+}
+
+.page.smartsearch .list {
+  flex: auto;
+  overflow: hidden;
+}
+
+.smartsearch-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartsearch-summary + .smartsearch-summary {
+  margin-top: 0.1rem;
+}
+
+.smartsearch-summary > .row {
+  display: flex;
+}
+
+.smartsearch-summary > .row .info {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  padding: 0.5rem;
+  border-bottom: solid 1px #ccc;
+}
+
+.smartsearch-summary > .row .info + .info {
+  margin-left: 0.1rem;
+}
+
+.smartsearch-summary > .row .info h1 {
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.smartsearch-summary > .row .info h2 {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999;
+}
+
+.smartsearch-summary > .row .detail {
+  flex: 1;
+  display: flex;
+  padding: 0.1rem;
+}
+
+.smartsearch-summary > .row .detail label,
+.smartsearch-summary > .row .detail p {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.smartsearch-summary > .row .detail label:after {
+  content: ':';
+  margin-right: 0.5rem;
+}
+
+.smartsearch-summary > .row .detail label {
+  flex: 2;
+  color: #999;
+  min-width: 60px;
+}
+
+.smartsearch-summary > .row .detail p {
+  flex: 3;
+  color: #333;
+}
+
+.smartsearch-summary > .additional {
+  max-height: 0;
+  transition: max-height 0.25s ease-in-out;
+  overflow: hidden;
+}
+
+.smartsearch-summary > .additional.shown {
+  max-height: 1000px;
+}

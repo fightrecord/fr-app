@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import FighterSummary from './FighterSummary';
+import cx from 'classnames';
 import Selector from './Selector';
 import Search from './Search';
-import { loadOrderedFighters, searchOrderedFighters } from '../services/fighter';
 
 const MIN_SEARCH_LENGTH = 2;
 
@@ -20,8 +19,14 @@ const directions = {
 };
 const defaultDirection = directions.Descending;
 
-export default () => {
-  const [fighters, setFighters] = useState([]);
+export default ({
+  className,
+  title,
+  renderRow = () => null,
+  doList = () => Promise.resolve([]),
+  doSearch = () => Promise.resolve([])
+}) => {
+  const [rows, setRows] = useState([]);
   const [limit, setLimit] = useState(defaultLimit);
   const [orderBy, setOrderBy] = useState(defaultOrderBy);
   const [direction, setDirection] = useState(defaultDirection);
@@ -38,22 +43,20 @@ export default () => {
     setSearch(freeText);
   };
 
-  const loadFighters = useCallback(() => {
+  const loadRows = useCallback(() => {
     if (isSearching) {
-      searchOrderedFighters(search, limit)
-        .then(setFighters);
+      doSearch(search, limit).then(setRows);
     } else {
-      loadOrderedFighters(orderBy, direction, limit)
-        .then(setFighters);
+      doList(orderBy, direction, limit).then(setRows);
     }
   }, [direction, limit, orderBy, search, isSearching]);
 
-  useEffect(loadFighters, [loadFighters]);
+  useEffect(loadRows, [loadRows]);
 
   return (
-    <div className="page fighters">
+    <div className={cx('page', 'smartsearch', className)}>
       <div className="title">
-        <h1>Fighters</h1>
+        <h1>{title}</h1>
         <Search label="Smart Search" onChange={updateSearch} />
         <div className="selectors">
           <Selector
@@ -78,9 +81,7 @@ export default () => {
         </div>
       </div>
       <div className="list">
-        <div className="scroller">
-          {fighters.map(fighter => <FighterSummary key={fighter._id} fighter={fighter} />)}
-        </div>
+        {rows.map(renderRow)}
       </div>
     </div>
   );

@@ -1,0 +1,10 @@
+.report-metrics {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0.25rem;
+}
+
+.report-metrics > div + div {
+  margin-left: 0.5rem;
+}

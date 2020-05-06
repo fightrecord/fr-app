@@ -51,6 +51,10 @@ service cloud.firestore {
     }
 
     // Console read access
+    match /dailyreports/{classId} {
+      allow read: if isConsoleUser();
+    }
+
     match /classes/{classId} {
       allow read: if isConsoleUser();
     }

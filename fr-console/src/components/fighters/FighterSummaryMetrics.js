@@ -1,5 +1,5 @@
 import React from 'react';
-import { asFeetAndInches } from '../conversion';
+import { asFeetAndInches } from '../../conversion';
 
 export default ({ fighter: { height, weight, className } = {} }) => (
   <div className="info metrics">

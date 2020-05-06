@@ -1,0 +1,33 @@
+.smartsearch-summary > .row .info.record {
+  flex: 5;
+  background: #eee;
+  cursor: pointer;
+}
+
+.smartsearch-summary > .row .info.record label {
+  color: #333;
+  cursor: pointer;
+}
+
+.smartsearch-summary > .row .detail.discipline label:after {
+  content: none;
+}
+
+.smartsearch-summary > .row .detail.discipline p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.smartsearch-summary > .row .detail.discipline p span {
+  flex: 1;
+}
+
+.smartsearch-summary > .row .detail.discipline.unconfirmed p {
+  color: #aaa;
+}
+
+p.no-record {
+  font-size: 0.8rem;
+  padding: 1rem;
+  text-align: center;
+}

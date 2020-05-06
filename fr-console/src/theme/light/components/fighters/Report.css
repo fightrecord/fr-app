@@ -1,0 +1,6 @@
+.report {
+  display: flex;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-bottom: solid 1px #ccc;
+}

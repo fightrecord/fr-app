@@ -1,0 +1,78 @@
+.smartsearch-summary > .row .info.quality {
+  flex: 0 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.smartsearch-summary > .row .info.quality p {
+  font-size: 0.6rem;
+  color: #fff;
+  transform: rotate(-90deg);
+}
+
+.smartsearch-summary.quality_0 > .row .info.quality {
+  background: #f43;
+}
+
+.smartsearch-summary.quality_1 > .row .info.quality {
+  background: #f63;
+}
+
+.smartsearch-summary.quality_2 > .row .info.quality {
+  background: #fc3;
+}
+
+.smartsearch-summary.quality_3 > .row .info.quality {
+  background: #6f3;
+}
+
+.smartsearch-summary.quality_2 > .row .info.quality p,
+.smartsearch-summary.quality_3 > .row .info.quality p {
+    color: #333;
+}
+
+.smartsearch-summary > .row .info.quality-report {
+  flex: 10;
+  max-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  transition: max-width 0.25s ease-in-out, padding-left 0.2s ease-in-out, padding-right 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.smartsearch-summary > .row .info.quality-report p {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.smartsearch-summary > .row .info.quality-report.shown {
+  max-width: 1000px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.smartsearch-summary.quality_0 > .row .info.quality-report {
+  background: #fcb;
+  border-right: solid 3px #f43;
+}
+
+.smartsearch-summary.quality_1 > .row .info.quality-report {
+  background: #fc9;
+  border-right: solid 3px #f63;
+}
+
+.smartsearch-summary.quality_2 > .row .info.quality-report {
+  background: #fe9;
+  border-right: solid 3px #fc3;
+}
+
+.smartsearch-summary.quality_3 > .row .info.quality-report {
+  background: #cf9;
+  border-right: solid 3px #6f3;
+}
+

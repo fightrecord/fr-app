@@ -2,6 +2,7 @@
   "name": "fr-console",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -15,7 +16,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:copy-files": "mv build/** ../public/console || move build/** ../public/console",
+    "build:remove-files": "rm -Rf ../public/console/** || del ../public/console/**",
+    "build": "react-scripts build && npm run build:remove-files && npm run build:copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

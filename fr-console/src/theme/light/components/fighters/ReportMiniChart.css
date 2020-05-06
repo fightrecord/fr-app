@@ -1,0 +1,34 @@
+.report-mini-chart {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  border: solid 1px #eee;
+  background: #fff;
+  padding: 0.5rem;
+}
+
+.report-mini-chart .data-point {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.report-mini-chart .data-point label {
+  flex:  0 0 50px;
+  font-size: 0.6rem;
+  text-align: right;
+  margin-right: 0.25rem;
+}
+
+.report-mini-chart .data-point .bar {
+  flex: 1;
+  height: 10px;
+  background: #eee;
+  display: flex;
+}
+
+.report-mini-chart .data-point .bar-filled {
+  height: 10px;
+  background: #999;
+}

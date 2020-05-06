@@ -1,15 +1,11 @@
-import './Bouts.css';
-import './BoutSummary.css';
 import './Console.css';
-import './Fighters.css';
-import './FighterHistory.css';
-import './FighterSummary.css';
-import './FighterSummaryBasic.css';
-import './FighterSummaryBio.css';
-import './FighterSummaryLocation.css';
-import './FighterSummaryMetrics.css';
-import './FighterSummaryQuality.css';
-import './FighterSummaryRecord.css';
 import './Header.css';
+import './Logo.css';
 import './Menu.css';
 import './Selector.css';
+import './SmartSearchPage.css';
+
+import './bouts';
+import './events';
+import './fighters';
+

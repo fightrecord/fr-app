@@ -4,11 +4,6 @@ import { loadClassesById } from './classes';
 import { loadTeamsById } from './teams';
 import { nextAlphabetically } from './common';
 
-const calculatDataQualityScore = fighter => {
-
-  return 0;
-};
-
 const hydrate = (classes, teams) => fighter => {
   const { city, class: cls, country, dob, region, team } = fighter;
 
@@ -27,8 +22,6 @@ const hydrate = (classes, teams) => fighter => {
 
   fighter.teamName = teams[team] ? teams[team].name : '';
   fighter.className = classes[cls] ? classes[cls].name : '';
-
-  fighter.dataQuality = calculatDataQualityScore(fighter);
 
   return fighter;
 };

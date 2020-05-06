@@ -1,5 +1,10 @@
 .console {
-  flex: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-width: 1200px;
   display: flex;
   flex-direction: column;
 }
@@ -12,11 +17,12 @@
 .console .pages {
   flex: auto;
   display: flex;
+  flex-direction: column;
 }
 
 .console .page {
   flex: auto;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 1rem;
 }

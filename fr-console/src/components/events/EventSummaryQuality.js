@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 
-export default ({ fighter: { _quality } = {} }) => {
+export default ({ event: { _quality } = {} }) => {
   const [showQualityReport, setShowQualityReport] = useState(false);
 
   const toggleQualityReport = () => setShowQualityReport(!showQualityReport);
 
-  const { score, actions } = _quality || {};
+  const { score, actions = [] } = _quality || {};
   return (
     <>
       <div className="info quality" onClick={toggleQualityReport}>

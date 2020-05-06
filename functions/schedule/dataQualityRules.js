@@ -68,14 +68,25 @@ const unconfirmedRecord = async ({ _id, record }, app = admin) => {
       else acc.lost += 1;
 
       return acc;
-    }, {
-      unConfirmed: true,
-      won: 0,
-      lost: 0,
-      draw: 0
-    });
+    }, { won: 0, lost: 0, draw: 0 });
 
-    return [0, [], { record: [...record, unconfirmedRecord] }];
+    const { won, lost, draw } = record[0] || {};
+    const total = (won || 0) + (lost || 0) + (draw || 0);
+    let score = 0;
+    if (bouts.length) {
+      if (total > 0) {
+        score = Math.floor(1000 * (bouts.length / total));
+      } else {
+        score = bouts.length * 10;
+      }
+    }
+
+    return [score, score === 1000 ? [] : [
+      'This fighters history is not complete'
+    ], {
+        record: record.filter(r => !(r.unconfirmed || r.unConfirmed)),
+        unconfirmedRecord
+      }];
   } catch (error) {
     console.error(error);
     return [0, []];

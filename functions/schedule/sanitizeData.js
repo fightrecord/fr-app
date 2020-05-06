@@ -12,7 +12,6 @@ const processSnapshot = snapshot => {
     ));
   });
 
-  console.log('Found', fighters.length, 'fighters.');
   return fighters;
 };
 
@@ -35,7 +34,7 @@ const assessDataQuality = app => async fighter => {
   const updated = Object.assign(fighter, amends, {
     _quality: { score, actions },
     _meta: Object.assign(_meta, {
-      lastQualityAssessment: now,
+      lastQuality: now,
       modified: now
     })
   });
@@ -43,14 +42,23 @@ const assessDataQuality = app => async fighter => {
   return updated;
 };
 
-const updateSearchableFields = fighter => {
-  const { name } = fighter;
+const sanitiseFighterRecord = fighter => {
+  const { _meta, name, record = [] } = fighter;
+  const now = DateTime.utc();
 
-  const searchable = {
+  const updated = {
+    _meta: Object.assign(_meta, {
+      lastCleaned: now.toISO()
+    }),
+    record: record.filter(({ won = 0, lost = 0, draw = 0 }) => won + lost + draw > 0),
     searchableName: name.toLowerCase()
   };
 
-  return Object.assign(fighter, searchable);
+  delete updated._meta.lastQualityAssessment;
+
+  return JSON.parse(
+    JSON.stringify(
+      Object.assign(fighter, updated)));
 };
 
 const updateFighter = (arr, app = admin) => new Promise(resolve => {
@@ -85,18 +93,22 @@ const loadOldestRecords = (batchSize, app = admin) => {
         .then(processSnapshot)));
 };
 
+const prioritiseLegacyRecords = results => {
+  const legacyRecords = results[1].filter(f => !f._meta.lastQualityAssessment);
+  const fighters = legacyRecords.length ? legacyRecords : results[0];
+
+  console.log('Found', fighters.length, 'fighters.');
+  return fighters;
+};
+
 // Update Data Quality Scores
 module.exports = (batchSize, app = admin) => loadOldestRecords(batchSize, app)
   // If we have legacy records then make these the priority
-  .then(results => {
-    const legacyRecords = results[1].filter(f => !f._meta.lastQualityAssessment);
-    return legacyRecords.length ? legacyRecords : results[0];
-  })
+  .then(prioritiseLegacyRecords)
+  // Clean and Sanitise Data
+  .then(fighters => fighters.map(sanitiseFighterRecord))
   // Do the Data quality assessment
   .then(fighters => Promise.all(fighters.map(assessDataQuality(app))))
-  // Update searchable fields
-  .then(fighters => fighters.map(updateSearchableFields))
   // Store the results
   .then(fighters => updateFighter(fighters, app))
-  .then(console.log)
-  .catch(console.error);
+  .then(console.log);

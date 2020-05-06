@@ -1,0 +1,14 @@
+.report-quality {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.25rem;
+}
+
+.report-quality > div {
+  flex: 1;
+}
+
+.report-quality > div + div {
+  margin-left: 0.5rem;
+}

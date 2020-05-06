@@ -1,0 +1,13 @@
+import './Fighters.css';
+import './FighterHistory.css';
+import './FighterSummaryBasic.css';
+import './FighterSummaryBio.css';
+import './FighterSummaryLocation.css';
+import './FighterSummaryMetrics.css';
+import './FighterSummaryQuality.css';
+import './FighterSummaryRecord.css';
+import './Report.css';
+import './ReportBigNumber.css';
+import './ReportMetrics.css';
+import './ReportMiniChart.css';
+import './ReportQuality.css';

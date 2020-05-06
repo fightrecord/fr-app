@@ -1,4 +1,4 @@
-.fighter-summary .info.quality {
+.smartsearch-summary > .row .info.quality {
   flex: 0 0 20px;
   display: flex;
   justify-content: center;
@@ -7,35 +7,34 @@
   cursor: pointer;
 }
 
-.fighter-summary .info.quality p {
+.smartsearch-summary > .row .info.quality p {
   font-size: 0.6rem;
   color: #fff;
   transform: rotate(-90deg);
 }
 
-.fighter-summary.quality_0 .info.quality {
+.smartsearch-summary.quality_0 > .row .info.quality {
   background: #f43;
-  border: solid 3px #f43;
 }
 
-.fighter-summary.quality_1 .info.quality {
+.smartsearch-summary.quality_1 > .row .info.quality {
   background: #f63;
 }
 
-.fighter-summary.quality_2 .info.quality {
+.smartsearch-summary.quality_2 > .row .info.quality {
   background: #fc3;
 }
 
-.fighter-summary.quality_3 .info.quality {
+.smartsearch-summary.quality_3 > .row .info.quality {
   background: #6f3;
 }
 
-.fighter-summary.quality_2 .info.quality p,
-.fighter-summary.quality_3 .info.quality p {
+.smartsearch-summary.quality_2 > .row .info.quality p,
+.smartsearch-summary.quality_3 > .row .info.quality p {
     color: #333;
 }
 
-.fighter-summary .info.quality-report {
+.smartsearch-summary > .row .info.quality-report {
   flex: 10;
   max-width: 0;
   padding-left: 0;
@@ -44,35 +43,35 @@
   overflow: hidden;
 }
 
-.fighter-summary .info.quality-report p {
+.smartsearch-summary > .row .info.quality-report p {
   font-size: 0.7rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.fighter-summary .info.quality-report.shown {
+.smartsearch-summary > .row .info.quality-report.shown {
   max-width: 1000px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
-.fighter-summary.quality_0 .info.quality-report {
+.smartsearch-summary.quality_0 > .row .info.quality-report {
   background: #fcb;
   border-right: solid 3px #f43;
 }
 
-.fighter-summary.quality_1 .info.quality-report {
+.smartsearch-summary.quality_1 > .row .info.quality-report {
   background: #fc9;
   border-right: solid 3px #f63;
 }
 
-.fighter-summary.quality_2 .info.quality-report {
+.smartsearch-summary.quality_2 > .row .info.quality-report {
   background: #fe9;
   border-right: solid 3px #fc3;
 }
 
-.fighter-summary.quality_3 .info.quality-report {
+.smartsearch-summary.quality_3 > .row .info.quality-report {
   background: #cf9;
   border-right: solid 3px #6f3;
 }
