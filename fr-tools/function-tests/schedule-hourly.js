@@ -7,4 +7,6 @@ admin.initializeApp({
   databaseURL: "https://fight-record-dev.firebaseio.com"
 });
 
-sanitizeData(100, admin);
+sanitizeData(1, admin)
+  .then(console.log)
+  .catch(console.error);

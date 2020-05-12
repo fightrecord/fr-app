@@ -7,4 +7,5 @@ admin.initializeApp({
   databaseURL: "https://fight-record-dev.firebaseio.com"
 });
 
-dailyReport(admin);
+dailyReport(admin)
+  .catch(console.error);
