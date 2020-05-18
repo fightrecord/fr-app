@@ -1,10 +1,11 @@
 import firebase from 'firebase/app';
 import { DateTime } from 'luxon';
-import { loadClassesById } from './classes';
-import { loadTeamsById } from './teams';
 import { nextAlphabetically } from './common';
 
 const hydrate = event => {
+  const { dateTime } = event;
+
+  event.dateTime = dateTime ? DateTime.fromISO(dateTime) : null;
 
   return event;
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cx from 'classnames';
 import Bouts from '../bouts';
 import EventSummaryBasic from './EventSummaryBasic';
+import EventSummaryDetails from './EventSummaryDetails';
 import EventSummaryCard from './EventSummaryCard';
 import EventSummaryQuality from './EventSummaryQuality';
 import Spinner from '../Spinner';
@@ -17,9 +18,9 @@ export default ({ event }) => {
   const score = _quality.score || 0;
 
   const getQuartile = score => {
-    const interQuartileRange = (max - min) / 4.0;
-    const quartile = Math.floor((score - min) / interQuartileRange);
-    return quartile > 3 ? 3 : (quartile < 0 ? 0 : quartile); // To handle score === max
+    const range = (max - min) / 4.0;
+    const quartile = range ? Math.floor((score - min) / range) : 3;
+    return quartile > 3 ? 3 : quartile; // To handle score === max
   };
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default ({ event }) => {
       <div className="row">
         <EventSummaryQuality event={event} />
         <EventSummaryBasic event={event} />
+        <EventSummaryDetails event={event} />
         <EventSummaryCard event={event} onClick={toggleAdditional} />
       </div>
       <div className={cx('additional', { shown: showAdditional })}>

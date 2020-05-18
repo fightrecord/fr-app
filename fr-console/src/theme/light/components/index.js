@@ -6,6 +6,7 @@ import './Selector.css';
 import './SmartSearchPage.css';
 
 import './bouts';
+import './dashboard';
 import './events';
 import './fighters';
 

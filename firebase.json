@@ -28,7 +28,12 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": []
+    "rewrites": [
+      {
+        "source": "/integrations{,/**}",
+        "function": "integrations"
+      }
+    ]
   },
   "storage": {
     "rules": "storage.rules"

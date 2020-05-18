@@ -14,15 +14,24 @@
   display: flex;
 }
 
-.console .pages {
+.console .content .pages {
   flex: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-.console .page {
+.console .content .pages .page {
   flex: auto;
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 1rem;
 }
+
+.console .content .pages .page .pre-page {
+  margin: -1rem -1rem 1rem -1rem;
+}
+
+.console .content .pages .page.selected {
+  display: flex;
+}
+

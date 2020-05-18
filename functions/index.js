@@ -3,9 +3,13 @@ const admin = require('firebase-admin');
 
 admin.initializeApp();
 
+// Incoming email
 exports.appmail = functions.https
   .onRequest(require('./appmail'));
 
+// Payment vendor integrations
+exports.integrations = functions.https
+  .onRequest(require('./integrations'));
 
 const TIMEZONE = 'UTC';
 const schedule = require('./schedule');

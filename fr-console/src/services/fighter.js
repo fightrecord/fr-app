@@ -96,8 +96,6 @@ export const loadFighterHistory = async fighterId => {
         _id: doc.id
       }));
 
-      console.log(bouts)
-
       return bouts;
     })
     .catch(console.error);

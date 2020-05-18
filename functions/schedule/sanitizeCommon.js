@@ -1,3 +1,4 @@
+const admin = require('firebase-admin');
 const { DateTime } = require('luxon');
 
 const processSnapshot = snapshot => snapshot.docs

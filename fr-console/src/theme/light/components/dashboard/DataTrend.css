@@ -1,0 +1,68 @@
+.data-trend h1 {
+    margin-bottom: 0.5rem;
+}
+
+.stacked-bar-chart {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.stacked-bar-chart .bar-set {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.stacked-bar-chart .bar-set + .bar-set{
+    margin-left: 5px;
+}
+
+.stacked-bar-chart .bar-set .volumes {
+    flex: 0 0 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stacked-bar-chart .bar-set .volumes div {
+    flex: 1;
+    font-size: 0.6rem;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.stacked-bar-chart .bar-set .volumes .quartile_0 {
+    background-color: #f43;
+    color: #fff;
+}
+
+.stacked-bar-chart .bar-set .volumes .quartile_1 {
+    background-color: #f63;
+    color: #fff;
+}
+
+.stacked-bar-chart .bar-set .volumes .quartile_2 {
+    background-color: #fc3;
+}
+
+.stacked-bar-chart .bar-set .volumes .quartile_3 {
+    background-color: #6f3;
+}
+
+.stacked-bar-chart .bar-set .volumes div + div {
+    margin-top: 2px;
+}
+
+.stacked-bar-chart .bar-set label {
+    flex: 0 0 20px;
+    font-size: 0.6rem;
+    margin-top: 5px;
+    background-color: #666;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}

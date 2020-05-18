@@ -20,6 +20,7 @@ const directions = {
 const defaultDirection = directions.Descending;
 
 export default ({
+  children,
   className,
   title,
   renderRow = () => null,
@@ -49,12 +50,13 @@ export default ({
     } else {
       doList(orderBy, direction, limit).then(setRows);
     }
-  }, [direction, limit, orderBy, search, isSearching]);
+  }, [direction, doList, doSearch, limit, orderBy, search, isSearching]);
 
   useEffect(loadRows, [loadRows]);
 
   return (
     <div className={cx('page', 'smartsearch', className)}>
+      {children}
       <div className="title">
         <h1>{title}</h1>
         <Search label="Smart Search" onChange={updateSearch} />

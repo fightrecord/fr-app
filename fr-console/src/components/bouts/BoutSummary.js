@@ -8,7 +8,6 @@ export default ({ bout, fighterId }) => {
   const { wasDraw, winnerId } = bout;
 
   const win = winnerId === fighterId;
-  console.log(bout);
 
   return (
     <div className={cx('bout-summary', {

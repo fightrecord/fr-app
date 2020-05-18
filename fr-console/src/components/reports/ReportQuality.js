@@ -2,7 +2,7 @@ import React from 'react';
 import ReportBigNumber from './ReportBigNumber';
 
 export default ({ quality = {} }) => {
-  const { fighters: { quartiles = {} } = {} } = quality;
+  const { quartiles = {} } = quality;
 
   return (
     <div className="report-quality">

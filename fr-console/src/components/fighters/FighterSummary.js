@@ -20,9 +20,9 @@ export default ({ fighter }) => {
   const score = _quality.score || 0;
 
   const getQuartile = score => {
-    const interQuartileRange = (max - min) / 4.0;
-    const quartile = Math.floor((score - min) / interQuartileRange);
-    return quartile > 3 ? 3 : (quartile < 0 ? 0 : quartile); // To handle score === max
+    const range = (max - min) / 4.0;
+    const quartile = range ? Math.floor((score - min) / range) : 3;
+    return quartile > 3 ? 3 : quartile; // To handle score === max
   };
 
   useEffect(() => {

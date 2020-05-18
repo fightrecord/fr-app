@@ -6,6 +6,7 @@ export default ({ bout, fighterId }) => {
   const result = wasDraw ? 'Draw' : (winnerId === fighterId ? 'Win' : 'Loss');
 
   const methods = {
+    'Dec': 'Unanimous Decision',
     'KO': 'Knock Out',
     'MD': wasDraw ? 'Majority Draw' : 'Majority Decision',
     'Pts': 'Points',
