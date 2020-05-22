@@ -13,28 +13,28 @@ const logEvent = (req, res) => {
   const onResponse = (error, response) => {
     if (error) {
       console.error(error);
-
-      response.status(400).send(`Webhook Error: ${error}`);
-    } else if (response.verification_status === "SUCCESS") {
-      admin.firestore()
-        .collection('integrations')
-        .doc('stripe')
-        .collection('events')
-        .add(event);
-
-      console.log('Event type', event.type);
-
-      response.status(200).json({ received: true });
+      res.status(400).send(`Webhook Error: ${error}`);
     } else {
-      console.error(`Webhook Verification Failure`);
+      console.log(response);
+      if (response.verification_status === "SUCCESS") {
+        admin.firestore()
+          .collection('integrations')
+          .doc('stripe')
+          .collection('events')
+          .add(event);
 
-      response.status(400).send(`Webhook Verification Failure`);
+        console.log('Event type', event.type);
+        res.status(200).json({ received: true });
+      } else {
+        console.error(`Webhook Verification Failure`);
+        res.status(400).send(`Webhook Verification Failure`);
+      }
     }
   };
 
   paypal.notification.webhookEvent.verify(
     req.headers,
-    req.body,
+    req.rawBody,
     config.webhook_id,
     onResponse);
 };
