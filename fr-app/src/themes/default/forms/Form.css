@@ -1,0 +1,53 @@
+.forms {
+  flex: 1;
+  background-color: #222;
+  background-image:  url(../assets/background-onboarding.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  flex: 1;
+  max-width: 600px;
+  padding: 1rem;
+  background-color:  rgba(0,0,0,0.6);
+  overflow-y: auto;
+}
+
+.form h1 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #e5192c;
+  padding: 0.5rem 0;
+}
+
+.form h2 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  background-color: #e5192c;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.form input {
+  background: none;
+  border: none;
+  color: #fff;
+  border-bottom: solid 2px #999;
+}
+
+.form select {
+  background: none;
+  border: none;
+  color: #fff;
+  border-bottom: solid 2px #999;
+}
+
+.form select option {
+  background: #000;
+  border: none;
+}

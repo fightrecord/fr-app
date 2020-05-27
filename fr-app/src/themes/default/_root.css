@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Inter|Oswald:800&display=swap');
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #eee;
+}
+
+h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: normal;
+  font-size: 1.25rem;
+}
+
+input, button, textarea {
+  font-family: 'Inter', sans-serif;
+}
+
+button {
+  background: #e5192c;
+  border: solid 1px #9c101e;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 0.5rem 2rem;
+  color: #fff;
+  cursor: pointer;
+  margin: 0.1rem;
+  outline: none;
+}
+
+button:hover {
+  background: #f11a2f;
+}
+
+button:disabled {
+  background: #222329;
+  color: #555;
+  border-color: #555;
+}
+
+button.secondary {
+  background: #141418;
+  border: solid 1px #222329;
+  padding: 0.5rem 0;
+  font-size: 0.7rem;
+  color: #ccc;
+}
+
+button.link:hover {
+  color: #fff;
+}
+
+i {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  background: #141418;
+  border: solid 1px #333;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  margin: 0.1rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+
+input::placeholder {
+  color: #666;
+}
+
+select {
+  background: #141418;
+  border: solid 1px #333;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  margin: 0.1rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+
+select option.placeholder {
+  color: #666;
+}
+
+.logo {
+  background-image: url(./assets/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -1rem;
+}

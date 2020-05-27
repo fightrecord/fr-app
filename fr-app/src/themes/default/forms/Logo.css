@@ -1,0 +1,7 @@
+.logo {
+  background-image: url(../assets/logo-full.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 2rem;
+  margin: 2rem;
+}

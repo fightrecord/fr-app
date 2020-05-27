@@ -4,13 +4,8 @@ import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth';
 import 'firebase/firestore';
-import App from './_framework';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-import onboard from './_modules/onboard';
-import chatModule from './_modules/chat';
-import profileModule from './_modules/profile';
-import homeModule from './_modules/home';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIcgUt_Q1a-lGmG5457DC_EN0vlBn4XT8",
@@ -26,15 +21,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-ReactDOM.render((
-  <App
-    modules={[
-      chatModule,
-      homeModule,
-      profileModule
-    ]}
-    renderOnboarder={onboard}
-  />
-), document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 serviceWorker.unregister();

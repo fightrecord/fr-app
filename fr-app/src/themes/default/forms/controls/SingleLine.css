@@ -1,0 +1,7 @@
+.single-line {
+  display: flex;
+}
+
+.single-line input {
+  flex: 1;
+}
