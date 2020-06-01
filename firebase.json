@@ -32,6 +32,10 @@
       {
         "source": "/integrations{,/**}",
         "function": "integrations"
+      },
+      {
+        "source": "/form{,/**}",
+        "destination": "/index.html"
       }
     ]
   },
