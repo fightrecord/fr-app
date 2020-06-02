@@ -5,9 +5,9 @@ import SmartSearchPage from '../SmartSearchPage';
 import FighterSummary from './FighterSummary';
 import { loadOrderedFighters, searchOrderedFighters } from '../../services/fighter';
 
-export default ({ className }) => (
+export default ({ className, isSelected }) => (
   <SmartSearchPage
-    className={cx(className, 'fighters')}
+    className={cx(className, 'fighters', { selected: isSelected })}
     title="Fighters"
     renderRow={(fighter, key) => <FighterSummary key={key} fighter={fighter} />}
     doList={loadOrderedFighters}

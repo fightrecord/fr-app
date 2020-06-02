@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const paypal = require('./paypal');
+const stripe = require('./stripe');
+
 const app = express();
 
 app.use(bodyParser.json({
@@ -11,8 +14,8 @@ app.use(bodyParser.json({
 
 const integrations = express.Router();
 
-integrations.use('/paypal', require('./paypal'));
-integrations.use('/stripe', require('./stripe'));
+integrations.use('/paypal', paypal.webhook);
+integrations.use('/stripe', stripe.webhook);
 integrations.get('/', (_, res) => {
   res.status(200).send('OK: integrations');
 });
@@ -23,4 +26,8 @@ app.get('/', (_, res) => {
 });
 
 // Export the API
-module.exports = app;
+module.exports = {
+  webhooks: app,
+  onPaypal: paypal.onCreate,
+  onStripe: stripe.onCreate
+};

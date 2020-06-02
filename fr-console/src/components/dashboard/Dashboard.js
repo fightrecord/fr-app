@@ -1,9 +1,11 @@
 import React from 'react';
-import cx from 'classnames';
-import DataTrend from './DataTrend';
+import DataPanel from './DataPanel';
+import Page from '../Page';
+import SubscriptionPanel from './SubscriptionPanel';
 
-export default ({ className }) => (
-    <div className={cx('page', 'dashboard', className)}>
-        <DataTrend />
-    </div>
+export default ({ isSelected }) => (
+  <Page className="dashboard" isSelected={isSelected}>
+    <DataPanel />
+    <SubscriptionPanel />
+  </Page>
 );

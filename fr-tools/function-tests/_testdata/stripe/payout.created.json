@@ -1,0 +1,38 @@
+{
+  "api_version": "2018-02-06",
+  "request": {
+    "idempotency_key": null,
+    "id": null
+  },
+  "id": "evt_1Gkhk0CMMMWIwmnxbvUY47X8",
+  "object": "event",
+  "pending_webhooks": 1,
+  "livemode": true,
+  "created": 1589941988,
+  "data": {
+    "object": {
+      "failure_code": null,
+      "method": "standard",
+      "id": "po_1GkhjVCMMMWIwmnxbpsNqalR",
+      "object": "payout",
+      "automatic": true,
+      "status": "in_transit",
+      "balance_transaction": "txn_1GkhjVCMMMWIwmnxhoqn4peb",
+      "statement_descriptor": null,
+      "type": "bank_account",
+      "description": "STRIPE PAYOUT",
+      "arrival_date": 1590105600,
+      "currency": "gbp",
+      "failure_balance_transaction": null,
+      "metadata": {},
+      "source_type": "card",
+      "destination": "ba_1DEdaVCMMMWIwmnxGhgefhS6",
+      "amount": 704,
+      "failure_message": null,
+      "livemode": true,
+      "created": 1589941957
+    }
+  },
+  "type": "payout.created",
+  "_id": "uyA93iBxUtLRVZm8McPw"
+}

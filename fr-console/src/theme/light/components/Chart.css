@@ -1,0 +1,80 @@
+.chart .legend {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.chart .legend div {
+  font-size: 0.55rem;
+  border: solid 1px #666;
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
+  color: #fff;
+}
+
+.chart .legend div + div {
+  margin-left: 0.25rem;
+}
+
+.chart .legend div.series_0 {
+  background-color: #f90;   
+  border-color: #f90;  
+}
+
+.chart .legend div.series_1 {
+  background-color: #09f;
+  border-color: #09f;  
+}
+
+.chart .legend div.series_2 {
+  background-color: #f09;
+  border-color: #f09;  
+}
+
+.chart .legend div.series_3 {
+  background-color: #999;
+  border-color: #999;  
+}
+
+.chart svg {
+  max-height: 150px;
+  margin: 0.5rem 0;
+}
+
+.chart svg circle {
+  stroke-width: 2px;
+  stroke: #666;
+  fill: #fff;
+}
+
+.chart svg text.small {
+  font-size: 0.6rem;
+}
+
+.chart svg g.axes line {
+  stroke: #999;
+  stroke-width: 1;
+}
+
+.chart svg g {
+  stroke-width: 0.2rem;
+}
+
+.chart svg g.series_0 circle {
+  stroke: #f90;     
+  fill: #f90;
+}
+
+.chart svg g.series_1 circle {
+  stroke: #09f;
+  fill: #09f;
+}
+
+.chart svg g.series_2 circle {
+  stroke: #f09;
+  fill: #f09;
+}
+
+.chart svg g.series_3 circle {
+  stroke: #999;
+  fill: #999;
+}

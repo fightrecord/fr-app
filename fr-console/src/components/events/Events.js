@@ -5,9 +5,9 @@ import SmartSearchPage from '../SmartSearchPage';
 import EventSummary from './EventSummary';
 import { loadOrderedEvents, searchOrderedEvents } from '../../services/event';
 
-export default ({ className }) => (
+export default ({ className, isSelected }) => (
   <SmartSearchPage
-    className={cx(className, 'events')}
+    className={cx(className, 'events', { selected: isSelected })}
     title="Events"
     renderRow={(event, key) => <EventSummary key={key} event={event} />}
     doList={loadOrderedEvents}
