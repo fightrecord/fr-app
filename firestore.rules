@@ -70,6 +70,10 @@ service cloud.firestore {
     match /teams/{teamId} {
       allow read: if isConsoleUser();
     }
+
+    match /subscribers/{subscriberId} {
+      allow read: if isConsoleUser();
+    }
     
     match /{anyPath=**}/bouts/{boutId} {
       allow read: if isConsoleUser();

@@ -16,9 +16,9 @@ export default () => {
       <div className="content">
         <Menu />
         <div className="pages">
-          <Dashboard className={cx({ selected: currentModule === 'dashboard' })} />
-          <Fighters className={cx({ selected: currentModule === 'fighters' })} />
-          <Events className={cx({ selected: currentModule === 'events' })} />
+          <Dashboard isSelected={currentModule === 'dashboard'} />
+          <Fighters isSelected={currentModule === 'fighters'} />
+          <Events isSelected={currentModule === 'events'} />
         </div>
       </div>
     </div>

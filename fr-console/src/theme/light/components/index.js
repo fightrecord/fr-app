@@ -1,3 +1,4 @@
+import './Chart.css';
 import './Console.css';
 import './Header.css';
 import './Logo.css';

@@ -1,93 +1,74 @@
 import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import { loadReport } from '../../services/report';
+import Chart from '../Chart';
 
 export default () => {
   const [reports, setReports] = useState([]);
 
-  const totalDays = 30;
+  const totalDays = 28;
 
-  const to = DateTime.utc().startOf('day').minus({ days: 1 });
+  const to = DateTime.utc().startOf('day').plus({ days: -1 });
   const from = to.minus({ days: totalDays });
 
   useEffect(() => {
     loadReport(from, to).then(setReports);
   }, [setReports]);
 
-  const fighterQuality = reports
-    .reduce((acc, {
-      _meta: { createdDate }, quality: { fighters: { quartiles } = {} }
-    }) => ({ ...acc, [createdDate]: quartiles }), {});
+  const fighterData = {
+    points: reports.map(report => {
+      const { _meta: { createdDate }, quality: { fighters = {} } } = report;
+      const { quartiles = {} } = fighters || {};
 
-  const eventQuality = reports
-    .reduce((acc, {
-      _meta: { createdDate }, quality: { events: { quartiles } = {} }
-    }) => ({ ...acc, [createdDate]: quartiles }), {});
+      const dt = DateTime.fromFormat(createdDate, 'yyyy-LL-dd', { zone: 'UTC' });
+      const xValue = dt.toMillis();
 
-  const initQuartiles = () => (new Array(4)).fill(0);
+      return {
+        xValue, yValues: [
+          quartiles[0],
+          quartiles[1],
+          quartiles[2],
+          quartiles[3]
+        ]
+      };
+    }),
+    series: [
+      { label: 'Poor', color: '#f43' },
+      { label: 'Fair', color: '#f63' },
+      { label: 'Good', color: '#fc3' },
+      { label: 'Pristine', color: '#6f3' }
+    ]
+  };
 
-  const days = (new Array(totalDays)).fill(0).map((_, offset) => {
-    const date = to.minus({ days: offset }).toISODate();
-    const dateText = to.minus({ days: offset }).toFormat('dd/MM');
+  const eventData = {
+    points: reports.map(report => {
+      const { _meta: { createdDate }, quality: { events = {} } } = report;
+      const { quartiles = {} } = events || {};
 
-    const fighters = fighterQuality[date]
-      ? Object.entries(fighterQuality[date])
-        .reduce((acc, [key, value]) => {
-          const newArr = [...acc];
-          newArr[key] = value;
-          return newArr;
-        }, initQuartiles())
-      : initQuartiles();
+      const dt = DateTime.fromFormat(createdDate, 'yyyy-LL-dd', { zone: 'UTC' });
+      const xValue = dt.toMillis();
 
-    const events = eventQuality[date]
-      ? Object.entries(eventQuality[date])
-        .reduce((acc, [key, value]) => {
-          const newArr = [...acc];
-          newArr[key] = value;
-          return newArr;
-        }, initQuartiles())
-      : initQuartiles();
-
-    return {
-      date,
-      dateText,
-      fighters,
-      events
-    };
-  });
+      return {
+        xValue, yValues: [
+          quartiles[0],
+          quartiles[1],
+          quartiles[2],
+          quartiles[3]
+        ]
+      };
+    }),
+    series: [
+      { label: 'Poor', color: '#f43' },
+      { label: 'Fair', color: '#f63' },
+      { label: 'Good', color: '#fc3' },
+      { label: 'Pristine', color: '#6f3' }
+    ]
+  };
 
   return (
     <div className="widget data-trend">
-      <h1>Fighter data quality over time</h1>
-      <div className="stacked-bar-chart">
-        {days.map(({ date, dateText, fighters }) => (
-          <div key={date} className="bar-set">
-            <div className="volumes">
-              {fighters.map((total, index) => (
-                <div key={index} className={`quartile_${index}`} style={{ flex: total ? total : '0 0 2px' }}>
-                  {total ? total : null}
-                </div>
-              ))}
-            </div>
-            <label>{dateText}</label>
-          </div>
-        ))}
-      </div>
-      <h1>Event data quality over time</h1>
-      <div className="stacked-bar-chart">
-        {days.map(({ date, dateText, events }) => (
-          <div key={date} className="bar-set">
-            <div className="volumes">
-              {events.map((total, index) => (
-                <div key={index} className={`quartile_${index}`} style={{ flex: total ? total : '0 0 2px' }}>
-                  {total ? total : null}
-                </div>
-              ))}
-            </div>
-            <label>{dateText}</label>
-          </div>
-        ))}
-      </div>
+      <Chart title="Fighter data quality over time" data={fighterData} />
+      <Chart title="Event data quality over time" data={eventData} />
     </div>
   );
 };

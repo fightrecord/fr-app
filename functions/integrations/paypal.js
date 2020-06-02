@@ -41,4 +41,7 @@ const logEvent = (req, res) => {
 
 router.post('/', logEvent);
 
-module.exports = router;
+module.exports = {
+  webhook: router,
+  onCreate: () => null
+};

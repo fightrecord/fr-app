@@ -7,8 +7,15 @@ admin.initializeApp({
   databaseURL: "https://fight-record-dev.firebaseio.com"
 });
 
-const port = 4123;
+admin.firestore()
+  .collection('integrations')
+  .doc('stripe')
+  .collection('events')
+  .where('type', '==', 'invoice.payment_succeeded')
+  .get()
+  .then(snap => {
+    snap.docs.map(doc => {
+      integrations.onStripe(doc, {}, admin);
+    });
+  });
 
-integrations.listen(port, () => {
-  console.log(`Integrations app listening on port ${port}!`);
-});
