@@ -150,7 +150,7 @@ export default ({ title, data }) => {
     }).join(' L');
 
     return (
-      <path d={`M${path}`} stroke={color} fill="none" />
+      <path d={`M${path}`} style={{ stroke: color }} fill="none" />
     );
   };
 

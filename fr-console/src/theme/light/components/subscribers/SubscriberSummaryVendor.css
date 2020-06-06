@@ -1,0 +1,20 @@
+.smartsearch-summary > .row .info.vendor {
+  flex: 0 0 75px;
+  padding: 0 1rem;
+  display: flex;
+}
+
+.smartsearch-summary > .row .info.vendor > .logo {
+  flex: 1;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.smartsearch-summary > .row .info.vendor.stripe > .logo {
+  background-image: url(../../assets/logo-stripe.png);
+}
+
+.smartsearch-summary > .row .info.vendor.paypal > .logo {
+  background-image: url(../../assets/logo-paypal.png);
+}

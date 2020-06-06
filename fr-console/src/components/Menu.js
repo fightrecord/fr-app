@@ -12,6 +12,7 @@ export default () => {
         <li onClick={() => selectModule('dashboard')}>Dashboard</li>
         <li onClick={() => selectModule('fighters')}>Fighters</li>
         <li onClick={() => selectModule('events')}>Events</li>
+        <li onClick={() => selectModule('subscribers')}>Subscribers</li>
       </ul>
     </div>
   );

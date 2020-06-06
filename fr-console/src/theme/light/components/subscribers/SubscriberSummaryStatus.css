@@ -1,0 +1,78 @@
+.smartsearch-summary > .row .info.status {
+  flex: 0 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.smartsearch-summary > .row .info.status p {
+  font-size: 0.6rem;
+  color: #fff;
+  transform: rotate(-90deg);
+}
+
+.smartsearch-summary.status_issue > .row .info.status {
+  background: #f43;
+}
+
+.smartsearch-summary.status_expired > .row .info.status {
+  background: #f63;
+}
+
+.smartsearch-summary.status_due > .row .info.status {
+  background: #fc3;
+}
+
+.smartsearch-summary.status_ok > .row .info.status {
+  background: #6f3;
+}
+
+.smartsearch-summary.status_due > .row .info.status p,
+.smartsearch-summary.status_ok > .row .info.status p {
+    color: #333;
+}
+
+.smartsearch-summary > .row .info.status-report {
+  flex: 10;
+  max-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  transition: max-width 0.25s ease-in-out, padding-left 0.2s ease-in-out, padding-right 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.smartsearch-summary > .row .info.status-report p {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.smartsearch-summary > .row .info.status-report.shown {
+  max-width: 1000px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.smartsearch-summary.status_issue > .row .info.status-report {
+  background: #fcb;
+  border-right: solid 3px #f43;
+}
+
+.smartsearch-summary.status_expired > .row .info.status-report {
+  background: #fc9;
+  border-right: solid 3px #f63;
+}
+
+.smartsearch-summary.status_due > .row .info.status-report {
+  background: #fe9;
+  border-right: solid 3px #fc3;
+}
+
+.smartsearch-summary.status_ok > .row .info.status-report {
+  background: #cf9;
+  border-right: solid 3px #6f3;
+}
+

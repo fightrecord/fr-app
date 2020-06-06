@@ -7,12 +7,6 @@ const MIN_SEARCH_LENGTH = 2;
 
 const limits = [10, 20, 50, 100, 200];
 const defaultLimit = limits[1];
-const orderOptions = {
-  'Modified Time': '_meta.modified',
-  'Data Quality': '_quality.score',
-  Name: 'name'
-};
-const defaultOrderBy = orderOptions['Modified Time'];
 const directions = {
   Descending: 'desc',
   Ascending: 'asc'
@@ -23,10 +17,14 @@ export default ({
   children,
   className,
   title,
+  orderOptions = {},
+  searchOrder,
   renderRow = () => null,
   doList = () => Promise.resolve([]),
   doSearch = () => Promise.resolve([])
 }) => {
+  const defaultOrderBy = Object.values(orderOptions)[0];
+
   const [rows, setRows] = useState([]);
   const [limit, setLimit] = useState(defaultLimit);
   const [orderBy, setOrderBy] = useState(defaultOrderBy);
@@ -38,7 +36,7 @@ export default ({
   const updateSearch = freeText => {
     if (freeText && freeText.length > MIN_SEARCH_LENGTH) {
       setLimit(limits[0]);
-      setOrderBy(orderOptions.Name);
+      setOrderBy(searchOrder || orderOptions.Name);
       setDirection(directions.Ascending);
     }
     setSearch(freeText);

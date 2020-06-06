@@ -10,4 +10,6 @@ import './bouts';
 import './dashboard';
 import './events';
 import './fighters';
+import './reports';
+import './subscribers';
 

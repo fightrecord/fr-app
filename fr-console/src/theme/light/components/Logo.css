@@ -1,8 +1,8 @@
-.logo {
-  background-color: #e5192c;
-  background-image: url(../assets/logo.png);
+.header > .logo {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  background-color: #e5192c;
+  background-image: url(../assets/logo-fr.png);
   width: 75px;
 }

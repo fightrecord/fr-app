@@ -1,0 +1,14 @@
+.report-payments {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.25rem;
+}
+
+.report-payments > div {
+  flex: 1;
+}
+
+.report-payments > div + div {
+  margin-left: 0.5rem;
+}

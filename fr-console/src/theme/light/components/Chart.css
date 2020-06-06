@@ -64,9 +64,17 @@
   fill: #f90;
 }
 
+.chart svg g.series_0 path {
+  stroke: #f90;     
+}
+
 .chart svg g.series_1 circle {
   stroke: #09f;
   fill: #09f;
+}
+
+.chart svg g.series_1 path {
+  stroke: #09f;     
 }
 
 .chart svg g.series_2 circle {
@@ -74,7 +82,15 @@
   fill: #f09;
 }
 
+.chart svg g.series_2 path {
+  stroke: #f09;     
+}
+
 .chart svg g.series_3 circle {
   stroke: #999;
   fill: #999;
+}
+
+.chart svg g.series_3 path {
+  stroke: #999;     
 }
