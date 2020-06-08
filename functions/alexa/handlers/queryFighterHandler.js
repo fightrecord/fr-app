@@ -12,15 +12,22 @@ module.exports = async input => {
     .filter(({ status }) => status.code === SUCCESSFUL_RESOLUTION)
     .reduce((acc, { values }) => [...acc, ...values.map(v => v.value)], []);
 
+  console.log(JSON.stringify(resolutions));
+
   const matchedMultiple = () => {
+
+    const names = resolutions.map(r => r.name);
+    const namesList = names.slice(0, names.length - 1).join(', ');
+    const lastName = names.slice(names.length - 1);
+
     return [
-      `I know about ${resolutions.length} fighters with the name ${searchedName}.`
+      `I know about ${resolutions.length} fighters with the name ${searchedName}.`,
+      `These are ${namesList} and ${lastName}.`,
+      `Which is it you're interested in?`
     ];
   };
 
   const matchedOne = async () => {
-    console.log(JSON.stringify(resolutions));
-
     const fighter = await admin.firestore()
       .collection('fighters')
       .doc(resolutions[0].id)
@@ -29,7 +36,9 @@ module.exports = async input => {
 
     console.log(JSON.stringify(fighter));
 
-    const { name, city, team: teamId, record = [] } = fighter;
+    const { name, city, team: teamId, record = [], gender } = fighter;
+    const firstName = name.split(' ')[0];
+    const pronoun = gender && gender.toLowerCase() === 'male' ? 'He' : 'She';
 
     let team;
     if (teamId) {
@@ -59,10 +68,11 @@ module.exports = async input => {
     }) => acc + won + draw + lost, 0);
 
     const fights = fightCount
-      ? [`${name} has had ${fightCount} fights.`]
+      ? [`${pronoun || firstName} has had ${fightCount} fights.`]
       : [];
 
-    const more = team || city || fightCount
+    const showMore = Math.random() < 0.1;
+    const more = (team || city || fightCount) && showMore
       ? [
         `Would you like to know more?`,
         `Try saying "What is ${name}'s record?"`,
