@@ -1,10 +1,17 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const stripe = require('stripe');
 const admin = require('firebase-admin');
 
 const config = require('../../config/stripe-live');
 
 const router = express.Router();
+router.use(bodyParser.json({
+  verify: (req, res, buf, encoding) => {
+    req.rawBody = buf.toString();
+  }
+}));
+
 const client = stripe(config.secretKey);
 
 const logEvent = event => admin.firestore()

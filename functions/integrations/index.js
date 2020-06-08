@@ -1,21 +1,15 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
-const paypal = require('./paypal');
-const stripe = require('./stripe');
 
 const app = express();
-
-app.use(bodyParser.json({
-  verify: (req, res, buf, encoding) => {
-    req.rawBody = buf.toString();
-  }
-}));
-
 const integrations = express.Router();
 
+// Payment Vendors
+const paypal = require('./paypal');
+const stripe = require('./stripe');
 integrations.use('/paypal', paypal.webhook);
 integrations.use('/stripe', stripe.webhook);
+
+// Health check
 integrations.get('/', (_, res) => {
   res.status(200).send('OK: integrations');
 });

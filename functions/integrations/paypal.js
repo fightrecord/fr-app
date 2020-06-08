@@ -1,9 +1,16 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const paypal = require('paypal-rest-sdk');
 const admin = require('firebase-admin');
 
 const config = require('../config/paypal-live');
+
 const router = express.Router();
+router.use(bodyParser.json({
+  verify: (req, res, buf, encoding) => {
+    req.rawBody = buf.toString();
+  }
+}));
 
 paypal.configure(config);
 

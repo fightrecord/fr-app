@@ -11,6 +11,9 @@ module.exports = {
   // Incoming email
   appmail: functions.https.onRequest(require('./appmail')),
 
+  // Alexa Skill
+  alexa: functions.https.onRequest(require('./alexa')),
+
   // Payment vendor integrations
   integrations: functions.https.onRequest(integrations.webhooks),
   paypalEventCreated: functions.firestore
