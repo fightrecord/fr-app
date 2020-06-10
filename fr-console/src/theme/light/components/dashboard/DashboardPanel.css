@@ -1,0 +1,9 @@
+.dashboard-panel {
+  display: flex;
+  padding: 1rem;
+  border: solid 1px #eee;
+}
+
+.dashboard-panel + .dashboard-panel {
+  margin-top: 1rem;
+}

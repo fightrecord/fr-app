@@ -6,7 +6,7 @@ const subscribersReport = require('./subscribersReport');
 
 const storeReport = (app = admin) => input => {
   const now = DateTime.utc();
-  const { metrics, quality } = input;
+  const { metrics = {}, quality = {} } = input;
 
   const dailyReport = {
     _meta: {

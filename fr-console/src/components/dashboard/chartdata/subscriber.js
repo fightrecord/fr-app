@@ -16,8 +16,8 @@ export const getDailyCount = reports => ({
     };
   }),
   series: [
-    { label: 'Total Subscribers' },
-    { label: 'Subscribed/Renewed' }
+    { label: 'Total Subscribers', color: '#f0ffe0' },
+    { label: 'Subscribed/Renewed', color: '#cf6' }
   ]
 });
 

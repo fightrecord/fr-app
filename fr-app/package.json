@@ -20,9 +20,7 @@
   },
   "scripts": {
     "start": "set PORT=3015 && react-scripts start",
-    "build:copy-files": "mv build/** ../public || move build/** ../public",
-    "build:remove-files": "rm -Rf ../public/** || del ../public/**",
-    "build": "react-scripts build && npm run build:remove-files && npm run build:copy-files",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "fight-record-dev"
+  },
+  "targets": {
+    "fight-record-dev": {
+      "hosting": {
+        "app": [
+          "fight-record-dev"
+        ],
+        "console": [
+          "fight-record-console-dev"
+        ]
+      }
+    }
   }
 }

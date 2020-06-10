@@ -9,13 +9,13 @@ admin.initializeApp({
 
 admin.firestore()
   .collection('integrations')
-  .doc('stripe')
+  .doc('paypal')
   .collection('events')
-  .where('type', '==', 'invoice.payment_succeeded')
+  .where('event_type', '==', 'PAYMENT.SALE.COMPLETED')
   .get()
   .then(snap => {
     snap.docs.map(doc => {
-      integrations.onStripe(doc, {}, admin);
+      integrations.onPaypal(doc, {}, admin);
     });
   });
 

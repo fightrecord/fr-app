@@ -172,7 +172,7 @@ export default ({ title, data }) => {
   };
 
   return (
-    <div className="chart">
+    <div className="line-chart">
       <h1>{title}</h1>
       <svg viewBox={`0 0 ${width} ${height}`}>
         <Axes

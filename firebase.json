@@ -8,41 +8,67 @@
       "npm --prefix \"./functions\" run lint"
     ]
   },
-  "hosting": {
-    "public": "public",
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "headers": [
-      {
-        "source": "/service-worker.js",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      }
-    ],
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "/integrations{,/**}",
-        "function": "integrations"
-      },
-      {
-        "source": "/alexa{,/**}",
-        "function": "alexa"
-      },
-      {
-        "source": "/form{,/**}",
-        "destination": "/index.html"
-      }
-    ]
-  },
+  "hosting": [
+    {
+      "target": "app",
+      "public": "fr-app/build",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "headers": [
+        {
+          "source": "/service-worker.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/integrations{,/**}",
+          "function": "integrations"
+        },
+        {
+          "source": "/alexa{,/**}",
+          "function": "alexa"
+        },
+        {
+          "source": "/form{,/**}",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "console",
+      "public": "fr-console/build",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "headers": [
+        {
+          "source": "/service-worker.js",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": []
+    }
+  ],
   "storage": {
     "rules": "storage.rules"
   }

@@ -18,9 +18,9 @@ export const getQualityData = reports => ({
     };
   }),
   series: [
-    { label: 'Poor', color: '#f43' },
-    { label: 'Fair', color: '#f63' },
-    { label: 'Good', color: '#fc3' },
-    { label: 'Pristine', color: '#6f3' }
+    { label: 'Poor', color: '#ffe8e0' },
+    { label: 'Fair', color: '#fff0e0' },
+    { label: 'Good', color: '#ffffe0' },
+    { label: 'Pristine', color: '#f0ffe0' }
   ]
 });

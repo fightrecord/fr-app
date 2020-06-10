@@ -1,7 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 const integrations = express.Router();
+
+integrations.use(bodyParser.json({
+  verify: (req, _, buf) => {
+    req.rawBody = buf.toString();
+    console.log('Parser Verify', buf, req.rawBody);
+  }
+}));
 
 // Payment Vendors
 const paypal = require('./paypal');

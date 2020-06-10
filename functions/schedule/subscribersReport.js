@@ -17,13 +17,15 @@ const compileTotals = input => {
     totalPaidToday: 0,
     totalRevenueToday: 0,
     lastPaid: {},
-    daysSincePayment: {},
-    vendor: {}
+    vendorCount: {},
+    vendorRevenue: {},
+    vendorCountToday: {},
+    vendorRevenueToday: {}
   };
 
-  const incrementCount = (propName, value) => {
+  const incrementCount = (propName, value, offset = 1) => {
     const currentCount = metrics[propName][value];
-    const newCount = currentCount ? currentCount + 1 : 1;
+    const newCount = currentCount ? currentCount + offset : offset;
     metrics[propName] = Object.assign(metrics[propName], {
       [value]: newCount
     });
@@ -42,11 +44,13 @@ const compileTotals = input => {
     if (daysSincePayment === 0) {
       metrics.totalPaidToday += 1;
       metrics.totalRevenueToday += amountPaid;
+      incrementCount('vendorCountToday', vendor);
+      incrementCount('vendorRevenueToday', vendor, amountPaid);
     }
 
     incrementCount('lastPaid', month);
-    incrementCount('daysSincePayment', daysSincePayment);
-    incrementCount('vendor', vendor);
+    incrementCount('vendorCount', vendor);
+    incrementCount('vendorRevenue', vendor, amountPaid);
   });
 
   return Object.assign(input, {

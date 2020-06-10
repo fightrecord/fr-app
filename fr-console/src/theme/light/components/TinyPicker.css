@@ -1,0 +1,15 @@
+.tiny-picker.pill {
+  border-radius: 1rem;
+  border: solid 1px #ccc;
+  font-size: 0.6rem;
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+}
+
+.tiny-picker.pill.selected {
+  background: #ccc;
+}
+
+.tiny-picker.pill + .tiny-picker.pill {
+  margin-left: 0.2rem;
+}

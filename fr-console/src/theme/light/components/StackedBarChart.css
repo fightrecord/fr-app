@@ -1,0 +1,89 @@
+.stacked-bar-chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.stacked-bar-chart + .stacked-bar-chart {
+  margin-left: 2rem;
+}
+
+.stacked-bar-chart h1 {
+  margin-bottom: 0.5rem;
+}
+
+.stacked-bar-chart > .chart {
+  display: flex;
+  height: 150px;
+}
+
+.stacked-bar-chart > .chart > .bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+}
+
+.stacked-bar-chart > .chart > .bar + .bar {
+  margin-left: 0.5rem;
+}
+
+.stacked-bar-chart > .chart > .bar > .block {
+  flex: 1;
+  background: #e0f0ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: 0.5rem;
+}
+
+.stacked-bar-chart > .chart > .bar > .x-label {
+  flex: 0 0 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f8f8;
+  margin-top: 0.1rem;
+}
+
+.stacked-bar-chart > .chart > .bar > .x-label > label {
+  font-size: 0.5rem;
+}
+
+.stacked-bar-chart > .chart > .bar > .block + .block {
+  margin-bottom: 1px;
+}
+
+.stacked-bar-chart > .chart > .bar > .filler {
+  flex: 1;
+}
+
+/* Styles for high density data */
+.stacked-bar-chart.high-density > .chart {
+  height: 200px;
+}
+
+.stacked-bar-chart.high-density > .chart > .bar {
+  flex: 1;
+  overflow: hidden;
+}
+
+.stacked-bar-chart.high-density > .chart > .bar + .bar {
+  margin-left: 0.1rem;
+}
+
+.stacked-bar-chart.high-density > .chart > .bar > .x-label {
+  overflow: visible;
+  margin-top: 0.1rem;
+  min-height: 75px;
+}
+
+.stacked-bar-chart.high-density > .chart > .bar > .x-label > label {
+  position: absolute;
+  justify-content: flex-start;
+  transform: rotate(90deg);
+}

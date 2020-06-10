@@ -17,9 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:copy-files": "mv build/** ../public/console || move build/** ../public/console",
-    "build:remove-files": "rm -Rf ../public/console/** || del ../public/console/**",
-    "build": "react-scripts build && npm run build:remove-files && npm run build:copy-files",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -28,11 +28,11 @@ exports.paymentSucceeded = async (data, app = admin) => {
         invoiceLink: invoice_pdf
       }
     },
-    starts: DateTime.fromSeconds(period_start).toISO(),
-    ends: DateTime.fromSeconds(period_end).toISO(),
+    starts: DateTime.fromSeconds(period_start).toUTC().toISO(),
+    ends: DateTime.fromSeconds(period_end).toUTC().toISO(),
     amountDue: amount_due,
     amountPaid: amount_paid,
-    paidAt: DateTime.fromSeconds(finalized_at).toISO(),
+    paidAt: DateTime.fromSeconds(finalized_at).toUTC().toISO(),
     currency
   });
 
